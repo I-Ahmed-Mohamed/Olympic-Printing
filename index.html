@@ -3,23 +3,33 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-  <title>أوليمبيك للطباعة | Olympic Printing</title>
+  <title>أوليمبيك للطباعة | Olympic For Printing</title>
   
   <!-- Meta description -->
   <meta name="description" content="أوليمبيك للطباعة والدعاية والإعلان - أفضل جودة طباعة أوفست وديجيتال واستيكرات وتغليف بأعلى معايير الدقة والألوان.">
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/jpeg" href="imge/logo.jpeg">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
   <style>
     :root {
-      --primary: #0066cc;
-      --primary-gradient: linear-gradient(135deg, #0052cc 0%, #00a3ff 100%);
-      --accent-gold: #f59e0b;
-      --text-dark: #1e293b;
-      --text-muted: #64748b;
-      --bg-color: #f8fafc;
-      --card-bg: rgba(255, 255, 255, 0.92);
-      --border-color: rgba(226, 232, 240, 0.85);
+      /* Identity Colors extracted directly from Logo */
+      --brand-navy: #0b2575;
+      --brand-royal: #1d4ed8;
+      --brand-magenta: #c026d3;
+      --brand-purple: #9333ea;
+      --brand-cyan: #00bcd4;
+      --brand-yellow: #f59e0b;
+      
+      --primary: #0b2575;
+      --primary-gradient: linear-gradient(135deg, #0b2575 0%, #1d4ed8 50%, #9333ea 100%);
+      --logo-spectrum: linear-gradient(135deg, #00bcd4 0%, #1d4ed8 35%, #c026d3 70%, #f59e0b 100%);
+      
+      --text-dark: #0b1e4f;
+      --text-muted: #57657d;
+      --bg-color: #f7f9fd;
+      --card-bg: rgba(255, 255, 255, 0.94);
+      --border-color: rgba(219, 228, 245, 0.85);
     }
     
     * {
@@ -40,7 +50,7 @@
       position: relative;
     }
 
-    /* Ambient Soft Background */
+    /* Ambient Soft Background matching logo spectrum */
     .ambient-bg {
       position: fixed;
       top: 0;
@@ -49,9 +59,10 @@
       height: 100vh;
       overflow: hidden;
       z-index: -1;
-      background: radial-gradient(circle at 10% 20%, rgba(0, 163, 255, 0.08), transparent 40%),
-                  radial-gradient(circle at 90% 80%, rgba(245, 158, 11, 0.07), transparent 40%),
-                  radial-gradient(circle at 50% 50%, rgba(233, 30, 99, 0.03), transparent 50%);
+      background: radial-gradient(circle at 15% 15%, rgba(0, 188, 212, 0.08), transparent 45%),
+                  radial-gradient(circle at 85% 25%, rgba(192, 38, 211, 0.08), transparent 45%),
+                  radial-gradient(circle at 50% 85%, rgba(245, 158, 11, 0.06), transparent 45%),
+                  radial-gradient(circle at 75% 70%, rgba(29, 78, 216, 0.07), transparent 45%);
     }
 
     .main-container {
@@ -79,44 +90,26 @@
       width: 100%;
     }
 
+    /* Logo frame styled with logo's shadow aura */
     .logo-frame {
-      width: 115px;
-      height: 115px;
-      border-radius: 32px;
+      width: 150px;
+      height: 150px;
+      border-radius: 36px;
       background: #ffffff;
-      padding: 6px;
-      box-shadow: 0 15px 35px rgba(0, 102, 204, 0.12), 0 5px 15px rgba(0,0,0,0.04);
+      padding: 10px;
+      box-shadow: 0 16px 36px rgba(11, 37, 117, 0.12), 0 6px 18px rgba(192, 38, 211, 0.08);
       margin-bottom: 18px;
       display: flex;
       justify-content: center;
       align-items: center;
-      border: 2px solid #ffffff;
+      border: 3px solid #ffffff;
       position: relative;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .logo-frame:hover {
-      transform: scale(1.04) translateY(-2px);
-      box-shadow: 0 20px 40px rgba(0, 102, 204, 0.18);
-    }
-
-    .logo-svg {
-      width: 100%;
-      height: 100%;
-      border-radius: 26px;
-      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      color: #fff;
-    }
-
-    .logo-svg i {
-      font-size: 40px;
-      background: linear-gradient(135deg, #38bdf8 0%, #f59e0b 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      transform: scale(1.04) translateY(-3px);
+      box-shadow: 0 22px 45px rgba(11, 37, 117, 0.16), 0 8px 22px rgba(192, 38, 211, 0.12);
     }
 
     .logo-frame img {
@@ -124,27 +117,31 @@
       height: 100%;
       object-fit: contain;
       border-radius: 26px;
-      display: none;
+      display: block;
     }
 
     .badge-pill {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      background: rgba(0, 102, 204, 0.08);
-      color: #0052cc;
+      gap: 7px;
+      background: linear-gradient(135deg, rgba(11, 37, 117, 0.06) 0%, rgba(192, 38, 211, 0.06) 100%);
+      color: var(--brand-navy);
       font-size: 13px;
       font-weight: 700;
-      padding: 4px 14px;
+      padding: 5px 16px;
       border-radius: 20px;
       margin-bottom: 10px;
-      border: 1px solid rgba(0, 102, 204, 0.15);
+      border: 1px solid rgba(192, 38, 211, 0.2);
+    }
+
+    .badge-pill i {
+      color: var(--brand-magenta);
     }
 
     h1 {
       font-size: 28px;
-      font-weight: 800;
-      color: #0f172a;
+      font-weight: 900;
+      color: var(--brand-navy);
       margin-bottom: 4px;
       letter-spacing: -0.5px;
     }
@@ -152,9 +149,9 @@
     .subtitle-en {
       font-family: 'Outfit', sans-serif;
       font-size: 14px;
-      font-weight: 600;
-      color: #64748b;
-      letter-spacing: 1.5px;
+      font-weight: 700;
+      color: var(--brand-royal);
+      letter-spacing: 2px;
       text-transform: uppercase;
       margin-bottom: 12px;
     }
@@ -180,18 +177,18 @@
     .chip {
       background: #ffffff;
       border: 1px solid var(--border-color);
-      padding: 6px 12px;
+      padding: 6px 13px;
       border-radius: 12px;
       font-size: 12.5px;
       font-weight: 600;
-      color: #475569;
+      color: #334155;
       box-shadow: 0 2px 6px rgba(0,0,0,0.02);
       transition: all 0.2s ease;
     }
 
     .chip:hover {
-      border-color: #0066cc;
-      color: #0066cc;
+      border-color: var(--brand-navy);
+      color: var(--brand-navy);
       transform: translateY(-2px);
     }
 
@@ -216,7 +213,7 @@
       text-decoration: none;
       font-weight: 600;
       font-size: 15.5px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+      box-shadow: 0 4px 15px rgba(11, 37, 117, 0.03);
       transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
       position: relative;
       overflow: hidden;
@@ -249,13 +246,13 @@
     .smart-btn .main-label {
       font-size: 15.5px;
       font-weight: 700;
-      color: #0f172a;
+      color: var(--brand-navy);
     }
 
     .smart-btn .sub-label {
       font-size: 12px;
       font-weight: 500;
-      color: #64748b;
+      color: var(--text-muted);
       margin-top: 2px;
     }
 
@@ -269,8 +266,8 @@
     .smart-btn:hover {
       transform: translateY(-3px) scale(1.01);
       background: #ffffff;
-      border-color: rgba(0, 102, 204, 0.3);
-      box-shadow: 0 10px 25px rgba(0, 102, 204, 0.1);
+      border-color: rgba(11, 37, 117, 0.3);
+      box-shadow: 0 10px 25px rgba(11, 37, 117, 0.1);
     }
 
     .smart-btn:active {
@@ -279,24 +276,29 @@
 
     .smart-btn:hover .arrow {
       transform: translateX(-4px);
-      color: var(--primary);
+      color: var(--brand-royal);
     }
 
-    /* Showcase Highlight Button */
+    /* Showcase Highlight Button - Matching the Logo Aura */
     .btn-showcase {
-      background: linear-gradient(135deg, #ffffff 0%, #f0f7ff 100%);
-      border: 1.5px solid #0066cc;
-      box-shadow: 0 8px 22px rgba(0, 102, 204, 0.12);
+      background: linear-gradient(135deg, #ffffff 0%, #fbf8ff 50%, #f0f7ff 100%);
+      border: 1.5px solid rgba(192, 38, 211, 0.35);
+      box-shadow: 0 8px 24px rgba(192, 38, 211, 0.12), 0 4px 12px rgba(11, 37, 117, 0.08);
     }
     .btn-showcase .icon-wrapper {
-      background: linear-gradient(135deg, #0052cc 0%, #00a3ff 100%);
+      background: linear-gradient(135deg, #0b2575 0%, #9333ea 50%, #00bcd4 100%);
       color: #ffffff;
+      box-shadow: 0 4px 12px rgba(147, 51, 234, 0.3);
     }
     .btn-showcase .main-label {
-      color: #0052cc;
+      background: linear-gradient(90deg, #0b2575 0%, #9333ea 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 800;
     }
     .btn-showcase:hover {
-      box-shadow: 0 12px 28px rgba(0, 102, 204, 0.2);
+      border-color: var(--brand-magenta);
+      box-shadow: 0 12px 30px rgba(192, 38, 211, 0.22);
     }
 
     /* WhatsApp */
@@ -311,8 +313,8 @@
     }
 
     /* Phone */
-    .btn-phone .icon-wrapper { background: #eff6ff; color: #0066cc; }
-    .btn-phone:hover { border-color: #0066cc; }
+    .btn-phone .icon-wrapper { background: #eff6ff; color: var(--brand-navy); }
+    .btn-phone:hover { border-color: var(--brand-navy); }
 
     /* Location / Maps */
     .btn-maps .icon-wrapper { background: #fef2f2; color: #ef4444; }
@@ -343,10 +345,10 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--text-muted);
+      color: var(--brand-navy);
       text-decoration: none;
       font-size: 17px;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+      box-shadow: 0 4px 14px rgba(11, 37, 117, 0.05);
       transition: all 0.3s ease;
       border: 1px solid var(--border-color);
       cursor: pointer;
@@ -354,10 +356,10 @@
     }
 
     .action-circle:hover {
-      color: #0066cc;
+      color: var(--brand-magenta);
       transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(0, 102, 204, 0.15);
-      border-color: #0066cc;
+      box-shadow: 0 8px 20px rgba(192, 38, 211, 0.18);
+      border-color: var(--brand-magenta);
     }
 
     .email-container {
@@ -368,15 +370,17 @@
     }
 
     .email-container a {
-      color: #0066cc;
+      color: var(--brand-navy);
       text-decoration: none;
-      font-weight: 600;
+      font-weight: 700;
       direction: ltr;
       display: inline-block;
       margin-top: 4px;
+      transition: color 0.2s ease;
     }
 
     .email-container a:hover {
+      color: var(--brand-magenta);
       text-decoration: underline;
     }
 
@@ -394,7 +398,7 @@
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: rgba(15, 23, 42, 0.6);
+      background: rgba(11, 37, 117, 0.65);
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
       z-index: 2000;
@@ -420,7 +424,7 @@
       overflow-y: auto;
       transform: translateY(100%);
       transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-      box-shadow: 0 -10px 40px rgba(0,0,0,0.2);
+      box-shadow: 0 -10px 40px rgba(11, 37, 117, 0.25);
       display: flex;
       flex-direction: column;
     }
@@ -445,7 +449,7 @@
     .modal-header h2 {
       font-size: 20px;
       font-weight: 800;
-      color: #0f172a;
+      color: var(--brand-navy);
       display: flex;
       align-items: center;
       gap: 8px;
@@ -468,7 +472,7 @@
 
     .modal-close-btn:hover {
       background: #e2e8f0;
-      color: #0f172a;
+      color: var(--brand-navy);
     }
 
     /* Modal Navigation Switcher */
@@ -501,7 +505,7 @@
 
     .tab-btn.active {
       background: #ffffff;
-      color: #0066cc;
+      color: var(--brand-navy);
       box-shadow: 0 4px 10px rgba(0,0,0,0.06);
     }
 
@@ -540,9 +544,9 @@
     }
 
     .filter-btn.active {
-      background: #0066cc;
+      background: var(--brand-navy);
       color: #ffffff;
-      border-color: #0066cc;
+      border-color: var(--brand-navy);
     }
 
     .products-grid {
@@ -565,7 +569,8 @@
 
     .product-card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      box-shadow: 0 8px 20px rgba(11, 37, 117, 0.1);
+      border-color: rgba(11, 37, 117, 0.2);
     }
 
     .product-img-wrap {
@@ -591,7 +596,7 @@
       position: absolute;
       top: 8px;
       right: 8px;
-      background: rgba(15, 23, 42, 0.75);
+      background: rgba(11, 37, 117, 0.85);
       backdrop-filter: blur(6px);
       color: #fff;
       font-size: 10px;
@@ -608,13 +613,13 @@
     .product-title {
       font-size: 13.5px;
       font-weight: 700;
-      color: #0f172a;
+      color: var(--brand-navy);
       margin-bottom: 3px;
     }
 
     .product-desc {
       font-size: 11.5px;
-      color: #64748b;
+      color: var(--text-muted);
       line-height: 1.4;
     }
 
@@ -623,8 +628,8 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 10px;
-      background: linear-gradient(135deg, #eff6ff 0%, #f0fdf4 100%);
-      border: 1px solid #bfdbfe;
+      background: linear-gradient(135deg, #f0f7ff 0%, #faf5ff 100%);
+      border: 1px solid #e9d5ff;
       border-radius: 18px;
       padding: 14px 10px;
       text-align: center;
@@ -634,7 +639,7 @@
     .stat-box .num {
       font-size: 18px;
       font-weight: 800;
-      color: #0066cc;
+      color: var(--brand-navy);
       font-family: 'Outfit', sans-serif;
     }
 
@@ -664,9 +669,9 @@
     }
 
     .client-item:hover {
-      border-color: #0066cc;
+      border-color: var(--brand-magenta);
       transform: translateX(-4px);
-      box-shadow: 0 6px 16px rgba(0, 102, 204, 0.08);
+      box-shadow: 0 6px 16px rgba(192, 38, 211, 0.1);
     }
 
     .client-avatar {
@@ -690,12 +695,12 @@
     .client-name {
       font-size: 14.5px;
       font-weight: 700;
-      color: #0f172a;
+      color: var(--brand-navy);
     }
 
     .client-work {
       font-size: 12px;
-      color: #64748b;
+      color: var(--text-muted);
       margin-top: 2px;
     }
 
@@ -704,14 +709,14 @@
       font-size: 14px;
     }
 
-    /* Lightbox Modal for Full Image View */
+    /* Lightbox Modal */
     .lightbox-modal {
       position: fixed;
       top: 0;
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: rgba(0, 0, 0, 0.92);
+      background: rgba(11, 37, 117, 0.94);
       backdrop-filter: blur(10px);
       z-index: 3000;
       display: none;
@@ -758,13 +763,13 @@
     .toast {
       position: fixed;
       bottom: 25px;
-      background: #0f172a;
+      background: var(--brand-navy);
       color: #fff;
       padding: 12px 24px;
       border-radius: 30px;
       font-size: 14px;
       font-weight: 600;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      box-shadow: 0 10px 25px rgba(11, 37, 117, 0.3);
       opacity: 0;
       transform: translateY(20px);
       transition: all 0.3s ease;
@@ -780,7 +785,7 @@
     /* Mobile adjustments */
     @media (max-width: 380px) {
       .main-container { padding: 25px 15px 35px; }
-      .logo-frame { width: 100px; height: 100px; }
+      .logo-frame { width: 125px; height: 125px; }
       h1 { font-size: 24px; }
       .smart-btn { padding: 11px 15px; font-size: 14.5px; }
       .smart-btn .icon-wrapper { width: 40px; height: 40px; font-size: 18px; margin-left: 10px; }
@@ -798,21 +803,16 @@
     <!-- Header & Logo Section -->
     <div class="header-section">
       <div class="logo-frame" title="شعار أوليمبيك للطباعة">
-        <div class="logo-svg">
-          <i class="fas fa-print"></i>
-        </div>
-        <!-- To use an image logo, uncomment below and remove/hide .logo-svg:
-        <img src="imge/logo.jpg" alt="أوليمبيك للطباعة Logo" style="display:block;">
-        -->
+        <img src="imge/logo.jpeg" alt="أوليمبيك للطباعة - Olympic For Printing">
       </div>
 
       <div class="badge-pill">
         <i class="fas fa-certificate"></i>
-        <span>طباعة ودعاية وإعلان</span>
+        <span>حلول الطباعة والدعاية والإعلان المتكاملة</span>
       </div>
 
       <h1>أوليمبيك للطباعة</h1>
-      <div class="subtitle-en">Olympic Printing</div>
+      <div class="subtitle-en">Olympic For Printing</div>
       <p class="tagline">جودة ألوان استثنائية، دقة متناهية، وأسرع تسليم لجميع مطبوعاتك التجارية والشخصية.</p>
 
       <!-- Services badges -->
@@ -827,7 +827,7 @@
     <!-- Action Buttons -->
     <div class="links-container">
 
-      <!-- NEW: Showcase / Clients & Products Button -->
+      <!-- Showcase / Clients & Products Button -->
       <button class="smart-btn btn-showcase" id="openShowcaseBtn">
         <div class="icon-wrapper"><i class="fas fa-layer-group"></i></div>
         <div class="btn-text-content">
@@ -924,7 +924,7 @@
     <div class="modal-sheet">
       <div class="modal-header">
         <h2>
-          <i class="fas fa-award" style="color: #0066cc;"></i>
+          <i class="fas fa-award" style="color: var(--brand-magenta);"></i>
           سابقة الأعمال والعملاء
         </h2>
         <button class="modal-close-btn" id="closeShowcaseBtn" aria-label="إغلاق">
@@ -1215,7 +1215,7 @@
     // Smart Web Share Feature
     document.getElementById('shareBtn').addEventListener('click', async () => {
       const shareData = {
-        title: 'أوليمبيك للطباعة | Olympic Printing',
+        title: 'أوليمبيك للطباعة | Olympic For Printing',
         text: 'أوليمبيك للطباعة والدعاية والإعلان - أفضل جودة طباعة أوفست وديجيتال وتغليف.',
         url: window.location.href,
       };
@@ -1241,13 +1241,13 @@
       const vCardContent = [
         'BEGIN:VCARD',
         'VERSION:3.0',
-        'FN:أوليمبيك للطباعة (Olympic Printing)',
+        'FN:أوليمبيك للطباعة (Olympic For Printing)',
         'ORG:أوليمبيك للطباعة والدعاية والإعلان',
-        'TITLE:خدمات الطباعة والتصميم',
+        'TITLE:خدمات الطباعة والتصميم والتغليف',
         'TEL;TYPE=WORK,VOICE:+201000000000',
         'EMAIL;TYPE=WORK:info@olympic-printing.com',
         'URL:' + window.location.href,
-        'NOTE:استيكرات، علب، كروت، بنرات، ودعاية وإعلان',
+        'NOTE:استيكرات، علب كرتون، كروت شخصية، بنرات، ودعاية وإعلان',
         'END:VCARD'
       ].join('\n');
 
@@ -1255,7 +1255,7 @@
       const url = URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.href = url;
-      link.setAttribute('download', 'Olympic_Printing.vcf');
+      link.setAttribute('download', 'Olympic_For_Printing.vcf');
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
