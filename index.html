@@ -27,9 +27,9 @@
       
       --text-dark: #0b1e4f;
       --text-muted: #57657d;
-      --bg-color: #f7f9fd;
-      --card-bg: rgba(255, 255, 255, 0.94);
-      --border-color: rgba(219, 228, 245, 0.85);
+      --bg-color: #ffffff;
+      --card-bg: #ffffff;
+      --border-color: rgba(11, 37, 117, 0.08);
     }
     
     * {
@@ -52,17 +52,7 @@
 
     /* Ambient Soft Background matching logo spectrum */
     .ambient-bg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      overflow: hidden;
-      z-index: -1;
-      background: radial-gradient(circle at 15% 15%, rgba(0, 188, 212, 0.08), transparent 45%),
-                  radial-gradient(circle at 85% 25%, rgba(192, 38, 211, 0.08), transparent 45%),
-                  radial-gradient(circle at 50% 85%, rgba(245, 158, 11, 0.06), transparent 45%),
-                  radial-gradient(circle at 75% 70%, rgba(29, 78, 216, 0.07), transparent 45%);
+      display: none;
     }
 
     .main-container {
@@ -90,33 +80,30 @@
       width: 100%;
     }
 
-    /* Logo frame styled with logo's shadow aura */
+    /* Seamless Logo Container */
     .logo-frame {
-      width: 150px;
-      height: 150px;
-      border-radius: 36px;
-      background: #ffffff;
-      padding: 10px;
-      box-shadow: 0 16px 36px rgba(11, 37, 117, 0.12), 0 6px 18px rgba(192, 38, 211, 0.08);
-      margin-bottom: 18px;
+      width: 160px;
+      height: 160px;
+      background: transparent;
+      padding: 0;
+      margin-bottom: 12px;
       display: flex;
       justify-content: center;
       align-items: center;
-      border: 3px solid #ffffff;
+      border: none;
+      box-shadow: none;
       position: relative;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.3s ease;
     }
 
     .logo-frame:hover {
-      transform: scale(1.04) translateY(-3px);
-      box-shadow: 0 22px 45px rgba(11, 37, 117, 0.16), 0 8px 22px rgba(192, 38, 211, 0.12);
+      transform: scale(1.05);
     }
 
     .logo-frame img {
       width: 100%;
       height: 100%;
       object-fit: contain;
-      border-radius: 26px;
       display: block;
     }
 
