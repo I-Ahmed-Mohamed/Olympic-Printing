@@ -107,76 +107,113 @@
       display: block;
     }
 
-    .badge-pill {
+    /* Modern Live Status Indicator */
+    .status-badge {
       display: inline-flex;
       align-items: center;
-      gap: 7px;
-      background: linear-gradient(135deg, rgba(11, 37, 117, 0.06) 0%, rgba(192, 38, 211, 0.06) 100%);
-      color: var(--brand-navy);
-      font-size: 13px;
+      gap: 8px;
+      background: #f0fdf4;
+      color: #166534;
+      font-size: 12.5px;
       font-weight: 700;
-      padding: 5px 16px;
+      padding: 5px 14px;
       border-radius: 20px;
-      margin-bottom: 10px;
-      border: 1px solid rgba(192, 38, 211, 0.2);
+      margin-bottom: 12px;
+      border: 1px solid #bbf7d0;
     }
 
-    .badge-pill i {
-      color: var(--brand-magenta);
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      background: #22c55e;
+      border-radius: 50%;
+      box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+      animation: statusPulse 2s infinite;
+    }
+
+    @keyframes statusPulse {
+      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+      70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
+      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
     }
 
     h1 {
-      font-size: 28px;
+      font-size: 26px;
       font-weight: 900;
       color: var(--brand-navy);
-      margin-bottom: 4px;
+      margin-bottom: 2px;
       letter-spacing: -0.5px;
     }
 
     .subtitle-en {
       font-family: 'Outfit', sans-serif;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 700;
       color: var(--brand-royal);
       letter-spacing: 2px;
       text-transform: uppercase;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     .tagline {
-      font-size: 14.5px;
+      font-size: 14px;
       color: var(--text-muted);
       font-weight: 500;
-      line-height: 1.6;
+      line-height: 1.5;
       max-width: 380px;
+      margin-bottom: 20px;
     }
 
-    /* Printing Services Chips */
-    .services-chips {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+    /* Modern 4-Column Bento Services Grid */
+    .services-bento-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
       gap: 8px;
-      margin: 18px 0 25px;
       width: 100%;
+      margin-bottom: 22px;
     }
 
-    .chip {
+    .bento-card {
+      background: #f8fafc;
+      border: 1px solid rgba(11, 37, 117, 0.06);
+      border-radius: 16px;
+      padding: 12px 4px 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 6px;
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+
+    .bento-card:hover {
       background: #ffffff;
-      border: 1px solid var(--border-color);
-      padding: 6px 13px;
-      border-radius: 12px;
-      font-size: 12.5px;
-      font-weight: 600;
-      color: #334155;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
-      transition: all 0.2s ease;
+      border-color: rgba(147, 51, 234, 0.3);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 18px rgba(11, 37, 117, 0.06);
     }
 
-    .chip:hover {
-      border-color: var(--brand-navy);
+    .bento-icon-wrap {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      transition: transform 0.25s ease;
+    }
+
+    .bento-card:hover .bento-icon-wrap {
+      transform: scale(1.1);
+    }
+
+    .bento-title {
+      font-size: 11.5px;
+      font-weight: 700;
       color: var(--brand-navy);
-      transform: translateY(-2px);
+      white-space: nowrap;
     }
 
     /* Links Container */
@@ -314,6 +351,138 @@
     /* Instagram */
     .btn-ig .icon-wrapper { background: #fdf2f8; color: #db2777; }
     .btn-ig:hover { border-color: #db2777; }
+
+    /* Branches Section */
+    .branches-wrapper {
+      width: 100%;
+      background: #ffffff;
+      border: 1px solid rgba(11, 37, 117, 0.08);
+      border-radius: 20px;
+      padding: 16px;
+      box-shadow: 0 4px 18px rgba(11, 37, 117, 0.03);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .branches-header-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--brand-navy);
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(11, 37, 117, 0.06);
+    }
+
+    .branch-card {
+      background: #f8fafc;
+      border: 1px solid rgba(11, 37, 117, 0.05);
+      border-radius: 14px;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: all 0.25s ease;
+    }
+
+    .branch-card:hover {
+      background: #ffffff;
+      border-color: rgba(147, 51, 234, 0.25);
+      box-shadow: 0 6px 16px rgba(11, 37, 117, 0.05);
+    }
+
+    .branch-info {
+      text-align: right;
+    }
+
+    .branch-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 4px;
+    }
+
+    .branch-name {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--brand-navy);
+    }
+
+    .branch-badge {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 8px;
+      background: rgba(11, 37, 117, 0.06);
+      color: var(--brand-navy);
+    }
+
+    .branch-badge.main {
+      background: #fdf2f8;
+      color: #c026d3;
+    }
+
+    .branch-addr {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.4;
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+    }
+
+    .branch-addr i {
+      color: #ef4444;
+      margin-top: 3px;
+      font-size: 12px;
+    }
+
+    .branch-actions {
+      display: flex;
+      gap: 8px;
+      width: 100%;
+    }
+
+    .branch-btn {
+      flex: 1;
+      padding: 8px 10px;
+      border-radius: 10px;
+      font-size: 12.5px;
+      font-weight: 700;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .branch-btn.btn-call {
+      background: #ffffff;
+      color: var(--brand-navy);
+      border: 1px solid rgba(11, 37, 117, 0.15);
+    }
+
+    .branch-btn.btn-call:hover {
+      background: var(--brand-navy);
+      color: #ffffff;
+    }
+
+    .branch-btn.btn-map {
+      background: #eff6ff;
+      color: #0284c7;
+      border: 1px solid #bfdbfe;
+      flex: 0 0 auto;
+      padding: 8px 12px;
+    }
+
+    .branch-btn.btn-map:hover {
+      background: #0284c7;
+      color: #ffffff;
+    }
 
     /* Footer & Quick Actions */
     .footer-actions {
@@ -799,21 +968,42 @@
         <img src="imge/logo.jpeg" alt="أوليمبيك للطباعة - Olympic For Printing">
       </div>
 
-      <div class="badge-pill">
-        <i class="fas fa-certificate"></i>
-        <span>حلول الطباعة والدعاية والإعلان المتكاملة</span>
+      <div class="status-badge">
+        <span class="status-dot"></span>
+        <span>متاح لاستقبال وتنفيذ طلبات الطباعة</span>
       </div>
 
-      <h1>أوليمبيك للطباعة</h1>
-      <div class="subtitle-en">Olympic For Printing</div>
-      <p class="tagline">جودة ألوان استثنائية، دقة متناهية، وأسرع تسليم لجميع مطبوعاتك التجارية والشخصية.</p>
+      <p class="tagline">وكالتك المتكاملة لطباعة الاستيكرات، العلب، الكروت، ومطبوعات الدعاية والإعلان بأعلى دقة ألوان.</p>
 
-      <!-- Services badges -->
-      <div class="services-chips">
-        <span class="chip">🏷️ استيكرات وليبل</span>
-        <span class="chip">📦 علب وتغليف</span>
-        <span class="chip">📇 كروت وفلايرات</span>
-        <span class="chip">🎯 بنرات ويافطات</span>
+      <!-- 4-Column Bento Services Bar -->
+      <div class="services-bento-bar">
+        <div class="bento-card" onclick="openShowcaseWithFilter('stickers')" title="عرض استيكرات المنتجات">
+          <div class="bento-icon-wrap" style="background: #e0f2fe; color: #0284c7;">
+            <i class="fas fa-tags"></i>
+          </div>
+          <span class="bento-title">استيكرات</span>
+        </div>
+
+        <div class="bento-card" onclick="openShowcaseWithFilter('packaging')" title="عرض العلب والتغليف">
+          <div class="bento-icon-wrap" style="background: #fef3c7; color: #d97706;">
+            <i class="fas fa-box-open"></i>
+          </div>
+          <span class="bento-title">علب وتغليف</span>
+        </div>
+
+        <div class="bento-card" onclick="openShowcaseWithFilter('cards')" title="عرض الكروت والهوية">
+          <div class="bento-icon-wrap" style="background: #f3e8ff; color: #9333ea;">
+            <i class="fas fa-id-card"></i>
+          </div>
+          <span class="bento-title">كروت وهوية</span>
+        </div>
+
+        <div class="bento-card" onclick="openShowcaseWithFilter('banners')" title="عرض اليافطات والبنرات">
+          <div class="bento-icon-wrap" style="background: #fee2e2; color: #ef4444;">
+            <i class="fas fa-bullhorn"></i>
+          </div>
+          <span class="bento-title">بنرات ويفط</span>
+        </div>
       </div>
     </div>
 
@@ -831,41 +1021,95 @@
       </button>
 
       <!-- WhatsApp Direct Contact -->
-      <a href="https://wa.me/201000000000?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D9%88%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%AE%D8%AF%D9%85%D8%A7%D8%AA%20%D8%A7%D9%84%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9" target="_blank" class="smart-btn btn-wa">
+      <a href="https://wa.me/201000992894?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D9%88%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%AE%D8%AF%D9%85%D8%A7%D8%AA%20%D8%A7%D9%84%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9" target="_blank" class="smart-btn btn-wa">
         <div class="icon-wrapper"><i class="fab fa-whatsapp"></i></div>
         <div class="btn-text-content">
           <span class="main-label">تواصل معنا واتساب</span>
-          <span class="sub-label">طلب عرض أسعار وإرسال التصاميم</span>
+          <span class="sub-label">01000992894 - طلب عرض أسعار وتصاميم</span>
         </div>
         <i class="fas fa-chevron-left arrow"></i>
       </a>
 
-      <!-- Direct Phone Call -->
-      <a href="tel:+201000000000" class="smart-btn btn-phone">
-        <div class="icon-wrapper"><i class="fas fa-phone-alt"></i></div>
-        <div class="btn-text-content">
-          <span class="main-label">اتصال هاتفي مباشر</span>
-          <span class="sub-label">خدمة العملاء والاستفسارات</span>
+      <!-- Our Branches (3 Branches) -->
+      <div class="branches-wrapper">
+        <div class="branches-header-title">
+          <i class="fas fa-store" style="color: var(--brand-magenta);"></i>
+          <span>فروعنا وأرقام التواصل (3 فروع)</span>
         </div>
-        <i class="fas fa-chevron-left arrow"></i>
-      </a>
 
-      <!-- Location / Google Maps -->
-      <a href="https://maps.google.com" target="_blank" class="smart-btn btn-maps">
-        <div class="icon-wrapper"><i class="fas fa-location-dot"></i></div>
-        <div class="btn-text-content">
-          <span class="main-label">موقع المطبعة على الخريطة</span>
-          <span class="sub-label">تفضل بزيارتنا واستلام طلبك</span>
+        <!-- Branch 1: Minya El-Qamh -->
+        <div class="branch-card">
+          <div class="branch-info">
+            <div class="branch-top">
+              <span class="branch-name">فرع منيا القمح</span>
+              <span class="branch-badge main">الفرع الرئيسي</span>
+            </div>
+            <div class="branch-addr">
+              <i class="fas fa-location-dot"></i>
+              <span>شارع الحرية - أمام محطة القطار وموقف بنها</span>
+            </div>
+          </div>
+          <div class="branch-actions">
+            <a href="tel:+201000992894" class="branch-btn btn-call">
+              <i class="fas fa-phone-alt"></i> 01000992894
+            </a>
+            <a href="https://maps.app.goo.gl/4cKTkewr9yfTkhve6?g_st=ic" target="_blank" class="branch-btn btn-map">
+              <i class="fas fa-map-marker-alt"></i> الخريطة
+            </a>
+          </div>
         </div>
-        <i class="fas fa-chevron-left arrow"></i>
-      </a>
+
+        <!-- Branch 2: Gesr El Suez -->
+        <div class="branch-card">
+          <div class="branch-info">
+            <div class="branch-top">
+              <span class="branch-name">فرع جسر السويس</span>
+              <span class="branch-badge">القاهرة</span>
+            </div>
+            <div class="branch-addr">
+              <i class="fas fa-location-dot"></i>
+              <span>مدينة قباء - شارع عمر بن الخطاب</span>
+            </div>
+          </div>
+          <div class="branch-actions">
+            <a href="tel:+201143102900" class="branch-btn btn-call">
+              <i class="fas fa-phone-alt"></i> 01143102900
+            </a>
+            <a href="https://maps.google.com/?q=جسر+السويس+مدينة+قباء+شارع+عمر+بن+الخطاب" target="_blank" class="branch-btn btn-map">
+              <i class="fas fa-map-marker-alt"></i> الخريطة
+            </a>
+          </div>
+        </div>
+
+        <!-- Branch 3: El Shorouk City -->
+        <div class="branch-card">
+          <div class="branch-info">
+            <div class="branch-top">
+              <span class="branch-name">فرع مدينة الشروق</span>
+              <span class="branch-badge">الشروق</span>
+            </div>
+            <div class="branch-addr">
+              <i class="fas fa-location-dot"></i>
+              <span>فاليو مول - الدور الثاني - مكتب A250</span>
+            </div>
+          </div>
+          <div class="branch-actions">
+            <a href="tel:+201000444742" class="branch-btn btn-call">
+              <i class="fas fa-phone-alt"></i> 01000444742
+            </a>
+            <a href="https://maps.google.com/?q=Value+Mall+El+Shorouk" target="_blank" class="branch-btn btn-map">
+              <i class="fas fa-map-marker-alt"></i> الخريطة
+            </a>
+          </div>
+        </div>
+      </div>
 
       <!-- Facebook Page -->
-      <a href="https://facebook.com" target="_blank" class="smart-btn btn-fb">
+      <a href="https://www.facebook.com/share/19sUGPgMSU/?mibextid=wwXIfr" target="_blank" class="smart-btn btn-fb">
         <div class="icon-wrapper"><i class="fab fa-facebook-f"></i></div>
         <div class="btn-text-content">
           <span class="main-label">صفحتنا على فيسبوك</span>
-          <span class="sub-label">شاهد أحدث أعمالنا وعروضنا</span>
+          <span class="sub-label">Olympic For Printing - عروض وأحدث الأعمال</span>
         </div>
         <i class="fas fa-chevron-left arrow"></i>
       </a>
@@ -890,7 +1134,7 @@
       </button>
 
       <!-- Email Button -->
-      <a href="mailto:info@olympic-printing.com" class="action-circle" title="مراسلتنا عبر الإيميل">
+      <a href="mailto:olympicprint2@gmail.com" class="action-circle" title="مراسلتنا عبر الإيميل">
         <i class="fas fa-envelope"></i>
       </a>
 
@@ -902,8 +1146,8 @@
 
     <!-- Email text info -->
     <div class="email-container">
-      إرسال ملفات التصميم الكبيرة للطباعة: <br>
-      <a href="mailto:info@olympic-printing.com">info@olympic-printing.com</a>
+      إرسال ملفات التصميم والطباعة: <br>
+      <a href="mailto:olympicprint2@gmail.com">olympicprint2@gmail.com</a>
     </div>
 
     <div class="copy-banner">
@@ -1208,11 +1452,22 @@
       lightboxModal.classList.remove('active');
     }
 
+    // Helper to open showcase directly on a category from the Bento cards
+    function openShowcaseWithFilter(category) {
+      showcaseModal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      switchTab('products');
+      const targetBtn = document.querySelector(`.filter-btn[onclick*="${category}"]`);
+      if (targetBtn) {
+        filterGallery(category, targetBtn);
+      }
+    }
+
     // Smart Web Share Feature
     document.getElementById('shareBtn').addEventListener('click', async () => {
       const shareData = {
         title: 'أوليمبيك للطباعة | Olympic For Printing',
-        text: 'أوليمبيك للطباعة والدعاية والإعلان - أفضل جودة طباعة أوفست وديجيتال وتغليف.',
+        text: 'أوليمبيك للطباعة والدعاية والإعلان - أفضل جودة طباعة أوفست وديجيتال واستيكرات وتغليف.',
         url: window.location.href,
       };
       
@@ -1240,10 +1495,13 @@
         'FN:أوليمبيك للطباعة (Olympic For Printing)',
         'ORG:أوليمبيك للطباعة والدعاية والإعلان',
         'TITLE:خدمات الطباعة والتصميم والتغليف',
-        'TEL;TYPE=WORK,VOICE:+201000000000',
-        'EMAIL;TYPE=WORK:info@olympic-printing.com',
+        'TEL;TYPE=WORK,VOICE;PREF:+201000992894',
+        'TEL;TYPE=WORK,VOICE:+201143102900',
+        'TEL;TYPE=WORK,VOICE:+201000444742',
+        'EMAIL;TYPE=WORK:olympicprint2@gmail.com',
+        'ADR;TYPE=WORK:;;فرع منيا القمح: شارع الحرية | فرع جسر السويس: قباء | فرع الشروق: فاليو مول;الشرقية / القاهرة;;;مصر',
         'URL:' + window.location.href,
-        'NOTE:استيكرات، علب كرتون، كروت شخصية، بنرات، ودعاية وإعلان',
+        'NOTE:فروعنا: منيا القمح 01000992894 - جسر السويس 01143102900 - الشروق 01000444742',
         'END:VCARD'
       ].join('\n');
 
@@ -1257,7 +1515,7 @@
       document.body.removeChild(link);
       URL.revokeObjectURL(url);
       
-      showToast('جارٍ تحميل جهة الاتصال لحفظها...');
+      showToast('جارٍ حفظ جهة الاتصال على هاتفك...');
     });
   </script>
 
