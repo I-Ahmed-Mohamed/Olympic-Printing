@@ -352,28 +352,105 @@
     .btn-ig .icon-wrapper { background: #fdf2f8; color: #db2777; }
     .btn-ig:hover { border-color: #db2777; }
 
-    /* Branches Section */
+    /* Branches Collapsible Accordion */
     .branches-wrapper {
       width: 100%;
       background: #ffffff;
       border: 1px solid rgba(11, 37, 117, 0.08);
       border-radius: 20px;
-      padding: 16px;
+      overflow: hidden;
       box-shadow: 0 4px 18px rgba(11, 37, 117, 0.03);
+      transition: all 0.3s ease;
+    }
+
+    .branches-wrapper.open {
+      border-color: rgba(147, 51, 234, 0.3);
+      box-shadow: 0 8px 25px rgba(11, 37, 117, 0.08);
+    }
+
+    .branches-toggle-btn {
+      width: 100%;
+      background: transparent;
+      border: none;
+      padding: 14px 18px;
       display: flex;
-      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      font-family: inherit;
+      text-align: right;
+      outline: none;
+      transition: background 0.2s ease;
+    }
+
+    .branches-toggle-btn:hover {
+      background: #f8fafc;
+    }
+
+    .branches-title-wrap {
+      display: flex;
+      align-items: center;
       gap: 12px;
     }
 
-    .branches-header-title {
+    .branch-icon-head {
+      width: 44px;
+      height: 44px;
+      border-radius: 13px;
+      background: linear-gradient(135deg, rgba(11, 37, 117, 0.08) 0%, rgba(192, 38, 211, 0.1) 100%);
+      color: var(--brand-magenta);
       display: flex;
       align-items: center;
-      gap: 8px;
+      justify-content: center;
+      font-size: 19px;
+      flex-shrink: 0;
+    }
+
+    .branch-header-texts {
+      display: flex;
+      flex-direction: column;
+      text-align: right;
+    }
+
+    .branch-header-texts .main-label {
       font-size: 15px;
       font-weight: 800;
       color: var(--brand-navy);
-      padding-bottom: 10px;
-      border-bottom: 1px solid rgba(11, 37, 117, 0.06);
+    }
+
+    .branch-header-texts .sub-label {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 2px;
+      font-weight: 500;
+    }
+
+    .toggle-arrow {
+      font-size: 14px;
+      color: #94a3b8;
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s ease;
+      margin-left: 4px;
+    }
+
+    .branches-wrapper.open .toggle-arrow {
+      transform: rotate(180deg);
+      color: var(--brand-magenta);
+    }
+
+    /* Collapsible Smooth Max-Height Animation */
+    .branches-collapse-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      background: #ffffff;
+    }
+
+    .branches-list-inner {
+      padding: 6px 16px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      border-top: 1px solid rgba(11, 37, 117, 0.05);
     }
 
     .branch-card {
@@ -1030,76 +1107,86 @@
         <i class="fas fa-chevron-left arrow"></i>
       </a>
 
-      <!-- Our Branches (3 Branches) -->
-      <div class="branches-wrapper">
-        <div class="branches-header-title">
-          <i class="fas fa-store" style="color: var(--brand-magenta);"></i>
-          <span>فروعنا وأرقام التواصل (3 فروع)</span>
-        </div>
+      <!-- Our Branches (Collapsible Toggle) -->
+      <div class="branches-wrapper" id="branchesAccordion">
+        <button class="branches-toggle-btn" id="branchesToggleBtn" type="button" aria-expanded="false">
+          <div class="branches-title-wrap">
+            <div class="branch-icon-head"><i class="fas fa-store"></i></div>
+            <div class="branch-header-texts">
+              <span class="main-label">فروعنا وأرقام التواصل (3 فروع) 📍</span>
+              <span class="sub-label">اضغط هنا لعرض الفروع والأرقام ومواقع الخرائط</span>
+            </div>
+          </div>
+          <i class="fas fa-chevron-down toggle-arrow"></i>
+        </button>
 
-        <!-- Branch 1: Minya El-Qamh -->
-        <div class="branch-card">
-          <div class="branch-info">
-            <div class="branch-top">
-              <span class="branch-name">فرع منيا القمح</span>
-              <span class="branch-badge main">الفرع الرئيسي</span>
+        <div class="branches-collapse-content" id="branchesCollapseContent">
+          <div class="branches-list-inner">
+            <!-- Branch 1: Minya El-Qamh -->
+            <div class="branch-card">
+              <div class="branch-info">
+                <div class="branch-top">
+                  <span class="branch-name">فرع منيا القمح</span>
+                  <span class="branch-badge main">الفرع الرئيسي</span>
+                </div>
+                <div class="branch-addr">
+                  <i class="fas fa-location-dot"></i>
+                  <span>شارع الحرية - أمام محطة القطار وموقف بنها</span>
+                </div>
+              </div>
+              <div class="branch-actions">
+                <a href="tel:+201000992894" class="branch-btn btn-call">
+                  <i class="fas fa-phone-alt"></i> 01000992894
+                </a>
+                <a href="https://maps.app.goo.gl/4cKTkewr9yfTkhve6?g_st=ic" target="_blank" class="branch-btn btn-map">
+                  <i class="fas fa-map-marker-alt"></i> الخريطة
+                </a>
+              </div>
             </div>
-            <div class="branch-addr">
-              <i class="fas fa-location-dot"></i>
-              <span>شارع الحرية - أمام محطة القطار وموقف بنها</span>
-            </div>
-          </div>
-          <div class="branch-actions">
-            <a href="tel:+201000992894" class="branch-btn btn-call">
-              <i class="fas fa-phone-alt"></i> 01000992894
-            </a>
-            <a href="https://maps.app.goo.gl/4cKTkewr9yfTkhve6?g_st=ic" target="_blank" class="branch-btn btn-map">
-              <i class="fas fa-map-marker-alt"></i> الخريطة
-            </a>
-          </div>
-        </div>
 
-        <!-- Branch 2: Gesr El Suez -->
-        <div class="branch-card">
-          <div class="branch-info">
-            <div class="branch-top">
-              <span class="branch-name">فرع جسر السويس</span>
-              <span class="branch-badge">القاهرة</span>
+            <!-- Branch 2: Gesr El Suez -->
+            <div class="branch-card">
+              <div class="branch-info">
+                <div class="branch-top">
+                  <span class="branch-name">فرع جسر السويس</span>
+                  <span class="branch-badge">القاهرة</span>
+                </div>
+                <div class="branch-addr">
+                  <i class="fas fa-location-dot"></i>
+                  <span>مدينة قباء - شارع عمر بن الخطاب</span>
+                </div>
+              </div>
+              <div class="branch-actions">
+                <a href="tel:+201143102900" class="branch-btn btn-call">
+                  <i class="fas fa-phone-alt"></i> 01143102900
+                </a>
+                <a href="https://maps.google.com/?q=جسر+السويس+مدينة+قباء+شارع+عمر+بن+الخطاب" target="_blank" class="branch-btn btn-map">
+                  <i class="fas fa-map-marker-alt"></i> الخريطة
+                </a>
+              </div>
             </div>
-            <div class="branch-addr">
-              <i class="fas fa-location-dot"></i>
-              <span>مدينة قباء - شارع عمر بن الخطاب</span>
-            </div>
-          </div>
-          <div class="branch-actions">
-            <a href="tel:+201143102900" class="branch-btn btn-call">
-              <i class="fas fa-phone-alt"></i> 01143102900
-            </a>
-            <a href="https://maps.google.com/?q=جسر+السويس+مدينة+قباء+شارع+عمر+بن+الخطاب" target="_blank" class="branch-btn btn-map">
-              <i class="fas fa-map-marker-alt"></i> الخريطة
-            </a>
-          </div>
-        </div>
 
-        <!-- Branch 3: El Shorouk City -->
-        <div class="branch-card">
-          <div class="branch-info">
-            <div class="branch-top">
-              <span class="branch-name">فرع مدينة الشروق</span>
-              <span class="branch-badge">الشروق</span>
+            <!-- Branch 3: El Shorouk City -->
+            <div class="branch-card">
+              <div class="branch-info">
+                <div class="branch-top">
+                  <span class="branch-name">فرع مدينة الشروق</span>
+                  <span class="branch-badge">الشروق</span>
+                </div>
+                <div class="branch-addr">
+                  <i class="fas fa-location-dot"></i>
+                  <span>فاليو مول - الدور الثاني - مكتب A250</span>
+                </div>
+              </div>
+              <div class="branch-actions">
+                <a href="tel:+201000444742" class="branch-btn btn-call">
+                  <i class="fas fa-phone-alt"></i> 01000444742
+                </a>
+                <a href="https://maps.google.com/?q=Value+Mall+El+Shorouk" target="_blank" class="branch-btn btn-map">
+                  <i class="fas fa-map-marker-alt"></i> الخريطة
+                </a>
+              </div>
             </div>
-            <div class="branch-addr">
-              <i class="fas fa-location-dot"></i>
-              <span>فاليو مول - الدور الثاني - مكتب A250</span>
-            </div>
-          </div>
-          <div class="branch-actions">
-            <a href="tel:+201000444742" class="branch-btn btn-call">
-              <i class="fas fa-phone-alt"></i> 01000444742
-            </a>
-            <a href="https://maps.google.com/?q=Value+Mall+El+Shorouk" target="_blank" class="branch-btn btn-map">
-              <i class="fas fa-map-marker-alt"></i> الخريطة
-            </a>
           </div>
         </div>
       </div>
@@ -1378,6 +1465,24 @@
         toast.classList.remove('show');
       }, 2500);
     }
+
+    // Branches Collapsible Accordion Toggle
+    const branchesToggleBtn = document.getElementById('branchesToggleBtn');
+    const branchesAccordion = document.getElementById('branchesAccordion');
+    const branchesContent = document.getElementById('branchesCollapseContent');
+
+    branchesToggleBtn.addEventListener('click', () => {
+      const isOpen = branchesAccordion.classList.contains('open');
+      if (isOpen) {
+        branchesAccordion.classList.remove('open');
+        branchesToggleBtn.setAttribute('aria-expanded', 'false');
+        branchesContent.style.maxHeight = '0px';
+      } else {
+        branchesAccordion.classList.add('open');
+        branchesToggleBtn.setAttribute('aria-expanded', 'true');
+        branchesContent.style.maxHeight = branchesContent.scrollHeight + 'px';
+      }
+    });
 
     // Modal Controls
     const showcaseModal = document.getElementById('showcaseModal');
