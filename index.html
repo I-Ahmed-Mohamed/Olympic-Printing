@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <title>أوليمبيك للطباعة | Olympic Printing</title>
+  
+  <!-- Meta description -->
+  <meta name="description" content="أوليمبيك للطباعة والدعاية والإعلان - أفضل جودة طباعة أوفست وديجيتال واستيكرات وتغليف بأعلى معايير الدقة والألوان.">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <style>
+    :root {
+      --primary: #0066cc;
+      --primary-gradient: linear-gradient(135deg, #0052cc 0%, #00a3ff 100%);
+      --accent-gold: #f59e0b;
+      --accent-cmyk: linear-gradient(90deg, #00bcd4, #e91e63, #ffeb3b, #212121);
+      --text-dark: #1e293b;
+      --text-muted: #64748b;
+      --bg-color: #f8fafc;
+      --card-bg: rgba(255, 255, 255, 0.85);
+      --border-color: rgba(226, 232, 240, 0.8);
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body, html {
+      font-family: 'Cairo', 'Outfit', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-dark);
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    /* Ambient Printing Light Background */
+    .ambient-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      z-index: -1;
+      background: radial-gradient(circle at 10% 20%, rgba(0, 163, 255, 0.08), transparent 40%),
+                  radial-gradient(circle at 90% 80%, rgba(245, 158, 11, 0.07), transparent 40%),
+                  radial-gradient(circle at 50% 50%, rgba(233, 30, 99, 0.04), transparent 50%);
+    }
+
+    /* CMYK top indicator line */
+    .cmyk-strip {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--accent-cmyk);
+      z-index: 100;
+    }
+
+    .main-container {
+      width: 100%;
+      max-width: 480px;
+      padding: 35px 20px 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: fadeIn 0.7s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Header & Branding */
+    .header-section {
+      text-align: center;
+      margin-bottom: 25px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+
+    .logo-frame {
+      width: 115px;
+      height: 115px;
+      border-radius: 32px;
+      background: #ffffff;
+      padding: 6px;
+      box-shadow: 0 15px 35px rgba(0, 102, 204, 0.12), 0 5px 15px rgba(0,0,0,0.04);
+      margin-bottom: 18px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 2px solid #ffffff;
+      position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .logo-frame:hover {
+      transform: scale(1.04) translateY(-2px);
+      box-shadow: 0 20px 40px rgba(0, 102, 204, 0.18);
+    }
+
+    /* Default Olympic Torch / Print Vector Icon until image is placed */
+    .logo-svg {
+      width: 100%;
+      height: 100%;
+      border-radius: 26px;
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+    }
+
+    .logo-svg i {
+      font-size: 40px;
+      background: linear-gradient(135deg, #38bdf8 0%, #f59e0b 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .logo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 26px;
+      display: none; /* Show when an actual image logo is provided */
+    }
+
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(0, 102, 204, 0.08);
+      color: #0052cc;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 10px;
+      border: 1px solid rgba(0, 102, 204, 0.15);
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 4px;
+      letter-spacing: -0.5px;
+    }
+
+    .subtitle-en {
+      font-family: 'Outfit', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: #64748b;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .tagline {
+      font-size: 14.5px;
+      color: var(--text-muted);
+      font-weight: 500;
+      line-height: 1.6;
+      max-width: 380px;
+    }
+
+    /* Printing Services Chips */
+    .services-chips {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin: 18px 0 25px;
+      width: 100%;
+    }
+
+    .chip {
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      padding: 6px 12px;
+      border-radius: 12px;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: #475569;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+      transition: all 0.2s ease;
+    }
+
+    .chip:hover {
+      border-color: #0066cc;
+      color: #0066cc;
+      transform: translateY(-2px);
+    }
+
+    /* Links Container */
+    .links-container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 13px;
+    }
+
+    .smart-btn {
+      display: flex;
+      align-items: center;
+      background: var(--card-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border-color);
+      border-radius: 18px;
+      padding: 13px 18px;
+      color: var(--text-dark);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15.5px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .smart-btn .icon-wrapper {
+      width: 44px;
+      height: 44px;
+      border-radius: 13px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      margin-left: 14px;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+    }
+
+    .smart-btn .btn-text-content {
+      flex-grow: 1;
+      text-align: right;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .smart-btn .main-label {
+      font-size: 15.5px;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .smart-btn .sub-label {
+      font-size: 12px;
+      font-weight: 500;
+      color: #64748b;
+      margin-top: 2px;
+    }
+
+    .smart-btn .arrow {
+      color: #94a3b8;
+      font-size: 13px;
+      transition: transform 0.3s ease, color 0.3s ease;
+      margin-right: 5px;
+    }
+
+    /* Individual Button Styles & Hover */
+    .smart-btn:hover {
+      transform: translateY(-3px) scale(1.01);
+      background: #ffffff;
+      border-color: rgba(0, 102, 204, 0.3);
+      box-shadow: 0 10px 25px rgba(0, 102, 204, 0.1);
+    }
+
+    .smart-btn:active {
+      transform: translateY(0) scale(0.98);
+    }
+
+    .smart-btn:hover .arrow {
+      transform: translateX(-4px);
+      color: var(--primary);
+    }
+
+    /* Primary highlight for WhatsApp */
+    .btn-wa {
+      background: #ffffff;
+      border-color: rgba(37, 211, 102, 0.25);
+    }
+    .btn-wa .icon-wrapper { background: #eafaf1; color: #25D366; }
+    .btn-wa:hover {
+      box-shadow: 0 10px 25px rgba(37, 211, 102, 0.15);
+      border-color: #25D366;
+    }
+
+    /* Phone */
+    .btn-phone .icon-wrapper { background: #eff6ff; color: #0066cc; }
+    .btn-phone:hover { border-color: #0066cc; }
+
+    /* Location / Maps */
+    .btn-maps .icon-wrapper { background: #fef2f2; color: #ef4444; }
+    .btn-maps:hover { border-color: #ef4444; }
+
+    /* Facebook */
+    .btn-fb .icon-wrapper { background: #eff6ff; color: #1877F2; }
+    .btn-fb:hover { border-color: #1877F2; }
+
+    /* Instagram */
+    .btn-ig .icon-wrapper { background: #fdf2f8; color: #db2777; }
+    .btn-ig:hover { border-color: #db2777; }
+
+    /* Footer & Quick Actions */
+    .footer-actions {
+      margin-top: 28px;
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      width: 100%;
+    }
+
+    .action-circle {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 17px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+      transition: all 0.3s ease;
+      border: 1px solid var(--border-color);
+      cursor: pointer;
+      outline: none;
+    }
+
+    .action-circle:hover {
+      color: #0066cc;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 102, 204, 0.15);
+      border-color: #0066cc;
+    }
+
+    .email-container {
+      margin-top: 22px;
+      font-size: 13.5px;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    .email-container a {
+      color: #0066cc;
+      text-decoration: none;
+      font-weight: 600;
+      direction: ltr;
+      display: inline-block;
+      margin-top: 4px;
+    }
+
+    .email-container a:hover {
+      text-decoration: underline;
+    }
+
+    .copy-banner {
+      margin-top: 25px;
+      font-size: 12px;
+      color: #94a3b8;
+      text-align: center;
+    }
+
+    /* Modal for vCard / Toast */
+    .toast {
+      position: fixed;
+      bottom: 25px;
+      background: #0f172a;
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 30px;
+      font-size: 14px;
+      font-weight: 600;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.3s ease;
+      pointer-events: none;
+      z-index: 1000;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Mobile specific adjustments */
+    @media (max-width: 380px) {
+      .main-container { padding: 25px 15px 35px; }
+      .logo-frame { width: 100px; height: 100px; }
+      h1 { font-size: 24px; }
+      .smart-btn { padding: 11px 15px; font-size: 14.5px; }
+      .smart-btn .icon-wrapper { width: 40px; height: 40px; font-size: 18px; margin-left: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top CMYK accent bar representing modern printing -->
+  <div class="cmyk-strip"></div>
+  <div class="ambient-bg"></div>
+
+  <div class="main-container">
+
+    <!-- Header & Logo Section -->
+    <div class="header-section">
+      <div class="logo-frame" title="شعار أوليمبيك للطباعة">
+        <!-- Default Stylized Icon: Replace with <img src="imge/logo.png" /> when available -->
+        <div class="logo-svg">
+          <i class="fas fa-print"></i>
+        </div>
+        <!-- To use an image logo, uncomment below and remove/hide .logo-svg:
+        <img src="imge/logo.jpg" alt="أوليمبيك للطباعة Logo" style="display:block;">
+        -->
+      </div>
+
+      <div class="badge-pill">
+        <i class="fas fa-certificate"></i>
+        <span>طباعة ودعاية وإعلان</span>
+      </div>
+
+      <h1>أوليمبيك للطباعة</h1>
+      <div class="subtitle-en">Olympic Printing</div>
+      <p class="tagline">جودة ألوان استثنائية، دقة متناهية، وأسرع تسليم لجميع مطبوعاتك التجارية والشخصية.</p>
+
+      <!-- Services badges -->
+      <div class="services-chips">
+        <span class="chip">🏷️ استيكرات وليبل</span>
+        <span class="chip">📦 علب وتغليف</span>
+        <span class="chip">📇 كروت وفلايرات</span>
+        <span class="chip">🎯 بنرات ويافطات</span>
+      </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="links-container">
+
+      <!-- WhatsApp Direct Contact -->
+      <!-- [عدّل رقم الواتساب هنا عندما يرسله العميل: ضع الرقم بعد wa.me/] -->
+      <a href="https://wa.me/201000000000?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D9%88%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%AE%D8%AF%D9%85%D8%A7%D8%AA%20%D8%A7%D9%84%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9" target="_blank" class="smart-btn btn-wa">
+        <div class="icon-wrapper"><i class="fab fa-whatsapp"></i></div>
+        <div class="btn-text-content">
+          <span class="main-label">تواصل معنا واتساب</span>
+          <span class="sub-label">طلب عرض أسعار وإرسال التصاميم</span>
+        </div>
+        <i class="fas fa-chevron-left arrow"></i>
+      </a>
+
+      <!-- Direct Phone Call -->
+      <!-- [عدّل رقم الهاتف للاتصال المباشر هنا] -->
+      <a href="tel:+201000000000" class="smart-btn btn-phone">
+        <div class="icon-wrapper"><i class="fas fa-phone-alt"></i></div>
+        <div class="btn-text-content">
+          <span class="main-label">اتصال هاتفي مباشر</span>
+          <span class="sub-label">خدمة العملاء والاستفسارات</span>
+        </div>
+        <i class="fas fa-chevron-left arrow"></i>
+      </a>
+
+      <!-- Location / Google Maps -->
+      <!-- [عدّل رابط خرائط جوجل هنا بعنوان المطبعة] -->
+      <a href="https://maps.google.com" target="_blank" class="smart-btn btn-maps">
+        <div class="icon-wrapper"><i class="fas fa-location-dot"></i></div>
+        <div class="btn-text-content">
+          <span class="main-label">موقع المطبعة على الخريطة</span>
+          <span class="sub-label">تفضل بزيارتنا واستلام طلبك</span>
+        </div>
+        <i class="fas fa-chevron-left arrow"></i>
+      </a>
+
+      <!-- Facebook Page -->
+      <!-- [عدّل رابط صفحة الفيسبوك هنا] -->
+      <a href="https://facebook.com" target="_blank" class="smart-btn btn-fb">
+        <div class="icon-wrapper"><i class="fab fa-facebook-f"></i></div>
+        <div class="btn-text-content">
+          <span class="main-label">صفحتنا على فيسبوك</span>
+          <span class="sub-label">شاهد أحدث أعمالنا وعروضنا</span>
+        </div>
+        <i class="fas fa-chevron-left arrow"></i>
+      </a>
+
+      <!-- Instagram Page -->
+      <!-- [عدّل رابط صفحة الإنستجرام هنا] -->
+      <a href="https://instagram.com" target="_blank" class="smart-btn btn-ig">
+        <div class="icon-wrapper"><i class="fab fa-instagram"></i></div>
+        <div class="btn-text-content">
+          <span class="main-label">معرض الصور على إنستجرام</span>
+          <span class="sub-label">نماذج وعينات من مطبوعاتنا</span>
+        </div>
+        <i class="fas fa-chevron-left arrow"></i>
+      </a>
+
+    </div>
+
+    <!-- Quick Footer Actions -->
+    <div class="footer-actions">
+      <!-- Save Contact vCard Button -->
+      <button class="action-circle" id="saveContactBtn" title="حفظ جهة الاتصال على هاتفك">
+        <i class="fas fa-address-book"></i>
+      </button>
+
+      <!-- Email Button -->
+      <!-- [عدّل البريد الإلكتروني هنا] -->
+      <a href="mailto:info@olympic-printing.com" class="action-circle" title="مراسلتنا عبر الإيميل">
+        <i class="fas fa-envelope"></i>
+      </a>
+
+      <!-- Smart Share Button -->
+      <button class="action-circle" id="shareBtn" title="مشاركة الصفحة">
+        <i class="fas fa-share-nodes"></i>
+      </button>
+    </div>
+
+    <!-- Email text info -->
+    <div class="email-container">
+      إرسال ملفات التصميم الكبيرة للطباعة: <br>
+      <a href="mailto:info@olympic-printing.com">info@olympic-printing.com</a>
+    </div>
+
+    <div class="copy-banner">
+      &copy; أوليمبيك للطباعة | جميع الحقوق محفوظة
+    </div>
+
+  </div>
+
+  <div class="toast" id="toast">تم نسخ الرابط بنجاح!</div>
+
+  <script>
+    // Toast Notification helper
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.innerText = message;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2500);
+    }
+
+    // 1. Smart Web Share Feature
+    document.getElementById('shareBtn').addEventListener('click', async () => {
+      const shareData = {
+        title: 'أوليمبيك للطباعة | Olympic Printing',
+        text: 'أوليمبيك للطباعة والدعاية والإعلان - أفضل جودة طباعة أوفست وديجيتال وتغليف.',
+        url: window.location.href,
+      };
+      
+      if (navigator.share && navigator.canShare && navigator.canShare(shareData)) {
+        try {
+          await navigator.share(shareData);
+        } catch (err) {
+          console.log('Error sharing:', err);
+        }
+      } else {
+        // Fallback: copy current page link
+        try {
+          await navigator.clipboard.writeText(window.location.href);
+          showToast('تم نسخ رابط الصفحة بنجاح!');
+        } catch (err) {
+          showToast('يمكنك نسخ الرابط من المتصفح');
+        }
+      }
+    });
+
+    // 2. Smart vCard Download (حفظ جهة الاتصال في الموبايل بلمسة واحدة)
+    document.getElementById('saveContactBtn').addEventListener('click', () => {
+      // Create vCard content
+      const vCardContent = [
+        'BEGIN:VCARD',
+        'VERSION:3.0',
+        'FN:أوليمبيك للطباعة (Olympic Printing)',
+        'ORG:أوليمبيك للطباعة والدعاية والإعلان',
+        'TITLE:خدمات الطباعة والتصميم',
+        'TEL;TYPE=WORK,VOICE:+201000000000',
+        'EMAIL;TYPE=WORK:info@olympic-printing.com',
+        'URL:' + window.location.href,
+        'NOTE:استيكرات، علب، كروت، بنرات، ودعاية وإعلان',
+        'END:VCARD'
+      ].join('\n');
+
+      const blob = new Blob([vCardContent], { type: 'text/vcard;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', 'Olympic_Printing.vcf');
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+      
+      showToast('جارٍ تحميل جهة الاتصال لحفظها...');
+    });
+  </script>
+
+</body>
+</html>
