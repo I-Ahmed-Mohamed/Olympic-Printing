@@ -348,6 +348,28 @@
     .btn-fb .icon-wrapper { background: #eff6ff; color: #1877F2; }
     .btn-fb:hover { border-color: #1877F2; }
 
+    /* QR Code Button */
+    .btn-qr {
+      background: linear-gradient(135deg, #ffffff 0%, #f0fdfa 50%, #eff6ff 100%);
+      border: 1.5px solid rgba(0, 188, 212, 0.35);
+      box-shadow: 0 6px 18px rgba(0, 188, 212, 0.1);
+    }
+    .btn-qr .icon-wrapper {
+      background: linear-gradient(135deg, #0b2575 0%, #00bcd4 100%);
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(0, 188, 212, 0.25);
+    }
+    .btn-qr .main-label {
+      background: linear-gradient(90deg, #0b2575 0%, #0284c7 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 800;
+    }
+    .btn-qr:hover {
+      border-color: var(--brand-cyan);
+      box-shadow: 0 10px 25px rgba(0, 188, 212, 0.2);
+    }
+
 
     /* Branches Collapsible Accordion */
     .branches-wrapper {
@@ -1018,6 +1040,189 @@
       transform: translateY(0);
     }
 
+    /* QR Sticker Modal Styles */
+    .qr-preview-card {
+      background: #ffffff;
+      border: 2px dashed rgba(11, 37, 117, 0.2);
+      border-radius: 24px;
+      padding: 22px 18px;
+      text-align: center;
+      margin-bottom: 20px;
+      box-shadow: 0 10px 30px rgba(11, 37, 117, 0.05);
+      position: relative;
+    }
+
+    .qr-preview-logo {
+      max-width: 170px;
+      margin: 0 auto 10px;
+    }
+
+    .qr-preview-logo img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .qr-preview-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--brand-magenta);
+      background: #fdf2f8;
+      padding: 3px 12px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+      border: 1px solid rgba(192, 38, 211, 0.2);
+    }
+
+    .qr-image-wrapper {
+      width: 200px;
+      height: 200px;
+      margin: 0 auto 14px;
+      padding: 10px;
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 6px 20px rgba(11, 37, 117, 0.08);
+      border: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .qr-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .qr-preview-title {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--brand-navy);
+      margin-bottom: 4px;
+    }
+
+    .qr-preview-subtitle {
+      font-size: 12.5px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .qr-preview-url {
+      font-size: 11.5px;
+      color: var(--brand-royal);
+      direction: ltr;
+      font-weight: 600;
+      word-break: break-all;
+    }
+
+    .qr-actions-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .qr-action-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      font-size: 13px;
+      font-weight: 700;
+      font-family: inherit;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      text-align: center;
+    }
+
+    .qr-action-btn.primary {
+      background: linear-gradient(135deg, #0b2575 0%, #1d4ed8 100%);
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(11, 37, 117, 0.2);
+      grid-column: span 2;
+    }
+    .qr-action-btn.primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(11, 37, 117, 0.3);
+    }
+
+    .qr-action-btn.secondary {
+      background: #eff6ff;
+      color: #0284c7;
+      border: 1px solid #bfdbfe;
+    }
+    .qr-action-btn.secondary:hover {
+      background: #0284c7;
+      color: #ffffff;
+    }
+
+    .qr-action-btn.outline {
+      background: #ffffff;
+      color: #334155;
+      border: 1px solid var(--border-color);
+    }
+    .qr-action-btn.outline:hover {
+      border-color: var(--brand-magenta);
+      color: var(--brand-magenta);
+    }
+
+    .qr-tips-card {
+      background: #fffbeb;
+      border: 1px solid #fef3c7;
+      border-radius: 16px;
+      padding: 14px 16px;
+      text-align: right;
+    }
+
+    .qr-tip-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13.5px;
+      font-weight: 800;
+      color: #b45309;
+      margin-bottom: 8px;
+    }
+
+    .qr-tip-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 12.5px;
+      color: #78350f;
+      line-height: 1.8;
+    }
+
+    .qr-tip-list li::before {
+      content: '✔ ';
+      color: #d97706;
+      font-weight: 800;
+    }
+
+    /* Print media styles */
+    @media print {
+      body * {
+        visibility: hidden !important;
+      }
+      #printableSticker, #printableSticker * {
+        visibility: visible !important;
+      }
+      #printableSticker {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 100mm;
+        border: 2px solid #0b2575 !important;
+        box-shadow: none !important;
+      }
+    }
+
     /* Mobile adjustments */
     @media (max-width: 380px) {
       .main-container { padding: 25px 15px 35px; }
@@ -1198,11 +1403,25 @@
         <i class="fas fa-chevron-left arrow"></i>
       </a>
 
+      <!-- QR Code & Sticker Button -->
+      <button class="smart-btn btn-qr" id="openQrBtn" type="button">
+        <div class="icon-wrapper"><i class="fas fa-qrcode"></i></div>
+        <div class="btn-text-content">
+          <span class="main-label">باركود الصفحة لطباعة الاستيكرات 📲</span>
+          <span class="sub-label">تحميل وطباعة رمز الـ QR بجودة فائقة للدعاية</span>
+        </div>
+        <i class="fas fa-chevron-left arrow"></i>
+      </button>
 
     </div>
 
     <!-- Quick Footer Actions -->
     <div class="footer-actions">
+      <!-- QR Code Quick Button -->
+      <button class="action-circle" id="quickQrBtn" title="عرض وتحميل باركود الاستيكر">
+        <i class="fas fa-qrcode"></i>
+      </button>
+
       <!-- Save Contact vCard Button -->
       <button class="action-circle" id="saveContactBtn" title="حفظ جهة الاتصال على هاتفك">
         <i class="fas fa-address-book"></i>
@@ -1434,6 +1653,75 @@
     </div> <!-- End .modal-sheet -->
   </div> <!-- End .modal-overlay -->
 
+  <!-- QR Code Modal (عرض وتحميل الباركود لطباعة الاستيكرات) -->
+  <div class="modal-overlay" id="qrModal">
+    <div class="modal-sheet">
+      <div class="modal-header">
+        <h2>
+          <i class="fas fa-qrcode" style="color: var(--brand-cyan);"></i>
+          باركود أوليمبيك للطباعة
+        </h2>
+        <button class="modal-close-btn" id="closeQrBtn" aria-label="إغلاق">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        
+        <!-- Printable Sticker Preview Card -->
+        <div class="qr-preview-card" id="printableSticker">
+          <div class="qr-preview-logo">
+            <img src="imge/logo.jpeg" alt="أوليمبيك للطباعة">
+          </div>
+          <div class="qr-preview-badge">رمز الباركود السريع 📲</div>
+          <div class="qr-image-wrapper">
+            <img src="imge/qr-code.png" alt="QR Code Olympic Printing" id="modalQrImg">
+          </div>
+          <div class="qr-preview-title">أوليمبيك للطباعة والدعاية والإعلان</div>
+          <div class="qr-preview-subtitle">امسح الكود لطلب خدمات الطباعة والتواصل المباشر</div>
+          <div class="qr-preview-url">i-ahmed-mohamed.github.io/Olympic-Printing</div>
+        </div>
+
+        <!-- Action Download / Print Buttons -->
+        <div class="qr-actions-grid">
+          <a href="imge/qr-code.png" download="Olympic-Printing-QR.png" class="qr-action-btn primary">
+            <i class="fas fa-download"></i>
+            <span>تحميل صورة الباركود (PNG عالي الجودة)</span>
+          </a>
+
+          <a href="imge/qr-sticker-design.svg" download="Olympic-Printing-Sticker.svg" class="qr-action-btn secondary">
+            <i class="fas fa-file-code"></i>
+            <span>تحميل استيكر فيكتور (SVG)</span>
+          </a>
+
+          <button type="button" class="qr-action-btn outline" onclick="printStickerCode()">
+            <i class="fas fa-print"></i>
+            <span>طباعة الاستيكر فوراً</span>
+          </button>
+
+          <button type="button" class="qr-action-btn outline" onclick="copySiteLink()">
+            <i class="fas fa-copy"></i>
+            <span>نسخ رابط الصفحة</span>
+          </button>
+        </div>
+
+        <!-- Printing Specs & Tips -->
+        <div class="qr-tips-card">
+          <div class="qr-tip-header">
+            <i class="fas fa-lightbulb" style="color: #f59e0b;"></i>
+            <span>نصائح طباعة الاستيكر للمطبعة:</span>
+          </div>
+          <ul class="qr-tip-list">
+            <li><strong>المقاسات الموصى بها:</strong> 5×5 سم أو 6×6 سم أو 7×7 سم.</li>
+            <li><strong>الخامة المقترحة:</strong> استيكر فينيل لاصق مقاوم للماء والرطوبة.</li>
+            <li><strong>التشطيب:</strong> سلفنة مط أو لامع (Matt / Glossy) مع قص ليزر (Kiss-Cut).</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
   <!-- Fullscreen Lightbox -->
   <div class="lightbox-modal" id="lightboxModal" onclick="closeLightbox()">
     <button class="lightbox-close" onclick="closeLightbox()"><i class="fas fa-times"></i></button>
@@ -1610,6 +1898,51 @@
       
       showToast('جارٍ حفظ جهة الاتصال على هاتفك...');
     });
+
+    // QR Code Modal Controls
+    const openQrBtn = document.getElementById('openQrBtn');
+    const quickQrBtn = document.getElementById('quickQrBtn');
+    const qrModal = document.getElementById('qrModal');
+    const closeQrBtn = document.getElementById('closeQrBtn');
+
+    function openQrModal() {
+      if (qrModal) {
+        qrModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeQrModal() {
+      if (qrModal) {
+        qrModal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    }
+
+    if (openQrBtn) openQrBtn.addEventListener('click', openQrModal);
+    if (quickQrBtn) quickQrBtn.addEventListener('click', openQrModal);
+    if (closeQrBtn) closeQrBtn.addEventListener('click', closeQrModal);
+    if (qrModal) {
+      qrModal.addEventListener('click', (e) => {
+        if (e.target === qrModal) closeQrModal();
+      });
+    }
+
+    function printStickerCode() {
+      window.print();
+    }
+
+    function copySiteLink() {
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(window.location.href).then(() => {
+          showToast('تم نسخ رابط الصفحة بنجاح!');
+        }).catch(() => {
+          showToast('يمكنك نسخ الرابط من المتصفح');
+        });
+      } else {
+        showToast('يمكنك نسخ الرابط من المتصفح');
+      }
+    }
   </script>
 
 </body>
