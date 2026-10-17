@@ -348,6 +348,46 @@
     .btn-fb .icon-wrapper { background: #eff6ff; color: #1877F2; }
     .btn-fb:hover { border-color: #1877F2; }
 
+    /* Instagram */
+    .btn-ig {
+      background: linear-gradient(135deg, #ffffff 0%, #fff5f8 50%, #fdf2f8 100%);
+      border: 1.5px solid rgba(225, 48, 108, 0.25);
+      box-shadow: 0 4px 16px rgba(225, 48, 108, 0.06);
+    }
+    .btn-ig .icon-wrapper {
+      background: linear-gradient(135deg, #f58529 0%, #dd2a7b 50%, #8134af 100%);
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(221, 42, 123, 0.25);
+    }
+    .btn-ig .main-label {
+      color: #be185d;
+      font-weight: 800;
+    }
+    .btn-ig:hover {
+      border-color: #dd2a7b;
+      box-shadow: 0 8px 24px rgba(221, 42, 123, 0.16);
+    }
+
+    /* TikTok */
+    .btn-tiktok {
+      background: linear-gradient(135deg, #ffffff 0%, #f8fafc 50%, #f1f5f9 100%);
+      border: 1.5px solid rgba(0, 0, 0, 0.2);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+    }
+    .btn-tiktok .icon-wrapper {
+      background: #000000;
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    }
+    .btn-tiktok .main-label {
+      color: #0f172a;
+      font-weight: 800;
+    }
+    .btn-tiktok:hover {
+      border-color: #000000;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    }
+
     /* QR Code Button */
     .btn-qr {
       background: linear-gradient(135deg, #ffffff 0%, #f0fdfa 50%, #eff6ff 100%);
@@ -368,6 +408,88 @@
     .btn-qr:hover {
       border-color: var(--brand-cyan);
       box-shadow: 0 10px 25px rgba(0, 188, 212, 0.2);
+    }
+
+    /* Vodafone Cash Button */
+    .btn-voda {
+      background: linear-gradient(135deg, #ffffff 0%, #fff7f7 50%, #fee2e2 100%);
+      border: 1.5px solid rgba(230, 0, 0, 0.25);
+      box-shadow: 0 4px 16px rgba(230, 0, 0, 0.06);
+    }
+    .btn-voda .icon-wrapper {
+      background: #ffffff;
+      border: 1px solid rgba(230, 0, 0, 0.18);
+      padding: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(230, 0, 0, 0.12);
+      overflow: hidden;
+    }
+    .btn-voda .icon-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .btn-voda .main-label {
+      color: #b91c1c;
+      font-weight: 800;
+    }
+    .btn-voda:hover {
+      border-color: #dc2626;
+      box-shadow: 0 8px 24px rgba(230, 0, 0, 0.16);
+    }
+
+    /* InstaPay Button */
+    .btn-instapay {
+      background: linear-gradient(135deg, #ffffff 0%, #faf5ff 50%, #f3e8ff 100%);
+      border: 1.5px solid rgba(92, 38, 130, 0.25);
+      box-shadow: 0 4px 16px rgba(92, 38, 130, 0.06);
+    }
+    .btn-instapay .icon-wrapper {
+      background: #ffffff;
+      border: 1px solid rgba(92, 38, 130, 0.18);
+      padding: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(92, 38, 130, 0.12);
+      overflow: hidden;
+    }
+    .btn-instapay .icon-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .btn-instapay .main-label {
+      color: #6b21a8;
+      font-weight: 800;
+    }
+    .btn-instapay:hover {
+      border-color: #7e22ce;
+      box-shadow: 0 8px 24px rgba(92, 38, 130, 0.16);
+    }
+
+    .btn-copy-chip {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 12px;
+      background: #f1f5f9;
+      color: #475569;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+    }
+    .btn-voda:hover .btn-copy-chip {
+      background: #dc2626;
+      color: #ffffff;
+    }
+    .btn-instapay:hover .btn-copy-chip {
+      background: #7e22ce;
+      color: #ffffff;
     }
 
 
@@ -1403,6 +1525,50 @@
         <i class="fas fa-chevron-left arrow"></i>
       </a>
 
+      <!-- Instagram Page -->
+      <a href="https://www.instagram.com/olympicprint.eg?stkn=MThzYnN2aWR4dmpkMg==" target="_blank" class="smart-btn btn-ig">
+        <div class="icon-wrapper"><i class="fab fa-instagram"></i></div>
+        <div class="btn-text-content">
+          <span class="main-label">صفحتنا على إنستجرام</span>
+          <span class="sub-label">@olympicprint.eg - نماذج ومعرض أعمالنا</span>
+        </div>
+        <i class="fas fa-chevron-left arrow"></i>
+      </a>
+
+      <!-- TikTok Account -->
+      <a href="https://www.tiktok.com/@olympicprint.eg?_r=1&_t=ZS-9ABxIeALJS8" target="_blank" class="smart-btn btn-tiktok">
+        <div class="icon-wrapper"><i class="fab fa-tiktok"></i></div>
+        <div class="btn-text-content">
+          <span class="main-label">حسابنا على تيك توك</span>
+          <span class="sub-label">@olympicprint.eg - فيديوهات الطباعة والإنتاج</span>
+        </div>
+        <i class="fas fa-chevron-left arrow"></i>
+      </a>
+
+      <!-- Vodafone Cash Payment Button -->
+      <a href="http://vf.eg/vfcash?id=mt&qrId=VP5d55" target="_blank" class="smart-btn btn-voda" id="vodaCashBtn">
+        <div class="icon-wrapper">
+          <img src="imge/vodafone-cash.png" alt="فودافون كاش">
+        </div>
+        <div class="btn-text-content">
+          <span class="main-label">فودافون كاش (تحويل العربون)</span>
+          <span class="sub-label">اضغط هنا للتحويل المباشر عبر المحفظة</span>
+        </div>
+        <div class="btn-copy-chip" onclick="copyCustomText(event, 'http://vf.eg/vfcash?id=mt&qrId=VP5d55', 'رابط فودافون كاش')"><i class="fas fa-copy"></i> نسخ</div>
+      </a>
+
+      <!-- InstaPay Payment Button -->
+      <a href="https://ipn.eg/S/ibrahemhossam11/instapay/9dadVy" target="_blank" class="smart-btn btn-instapay" id="instaPayBtn">
+        <div class="icon-wrapper">
+          <img src="imge/instapay.jpeg" alt="إنستاباي">
+        </div>
+        <div class="btn-text-content">
+          <span class="main-label">إنستاباي (InstaPay) للتحويل</span>
+          <span class="sub-label">ibrahemhossam11 - اضغط للتحويل الفوري</span>
+        </div>
+        <div class="btn-copy-chip" onclick="copyCustomText(event, 'ibrahemhossam11@instapay', 'عنوان إنستاباي')"><i class="fas fa-copy"></i> نسخ</div>
+      </a>
+
       <!-- QR Code & Sticker Button -->
       <button class="smart-btn btn-qr" id="openQrBtn" type="button">
         <div class="icon-wrapper"><i class="fas fa-qrcode"></i></div>
@@ -1941,6 +2107,35 @@
         });
       } else {
         showToast('يمكنك نسخ الرابط من المتصفح');
+      }
+    }
+
+    function handlePaymentCopy(e, val, name) {
+      if (e) e.stopPropagation();
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(val).then(() => {
+          showToast(`تم نسخ رقم ${name}: ${val} بنجاح!`);
+        }).catch(() => {
+          showToast(`رقم ${name}: ${val}`);
+        });
+      } else {
+        showToast(`رقم ${name}: ${val}`);
+      }
+    }
+
+    function copyCustomText(e, text, label) {
+      if (e) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(text).then(() => {
+          showToast(`تم نسخ ${label} بنجاح!`);
+        }).catch(() => {
+          showToast(`${label}: ${text}`);
+        });
+      } else {
+        showToast(`${label}: ${text}`);
       }
     }
   </script>
