@@ -765,6 +765,76 @@
       text-align: center;
     }
 
+    /* Developer Credit Badge */
+    .developer-credit-wrap {
+      margin-top: 14px;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .developer-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: #f8fafc;
+      border: 1px solid rgba(11, 37, 117, 0.08);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 11.5px;
+      color: #64748b;
+      box-shadow: 0 2px 8px rgba(11, 37, 117, 0.02);
+      transition: all 0.25s ease;
+    }
+
+    .developer-badge:hover {
+      background: #ffffff;
+      border-color: rgba(147, 51, 234, 0.25);
+      box-shadow: 0 4px 14px rgba(11, 37, 117, 0.06);
+    }
+
+    .dev-text {
+      font-weight: 500;
+    }
+
+    .dev-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      text-decoration: none;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 10px;
+      transition: all 0.2s ease;
+    }
+
+    .dev-link.dev-wa {
+      color: #15803d;
+      background: #dcfce7;
+    }
+
+    .dev-link.dev-wa:hover {
+      background: #22c55e;
+      color: #ffffff;
+      transform: translateY(-1px);
+    }
+
+    .dev-link.dev-fb {
+      color: #1d4ed8;
+      background: #dbeafe;
+      width: 22px;
+      height: 22px;
+      padding: 0;
+      justify-content: center;
+      border-radius: 50%;
+    }
+
+    .dev-link.dev-fb:hover {
+      background: #1d4ed8;
+      color: #ffffff;
+      transform: translateY(-1px);
+    }
+
     /* Modal / Showcase Dialog */
     .modal-overlay {
       position: fixed;
@@ -1603,6 +1673,19 @@
 
     <div class="copy-banner">
       &copy; أوليمبيك للطباعة | جميع الحقوق محفوظة
+    </div>
+
+    <!-- Developer Credit Badge -->
+    <div class="developer-credit-wrap">
+      <div class="developer-badge">
+        <span class="dev-text">تصميم وتطوير:</span>
+        <a href="https://wa.me/201094547599?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%B4%D8%A7%D9%87%D8%AF%D8%AA%20%D8%B5%D9%81%D8%AD%D8%A9%20%D8%A3%D9%88%D9%84%D9%8A%D9%85%D8%A8%D9%8A%D9%83%20%D9%84%D9%84%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9%20%D9%88%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%AA%D8%B5%D9%85%D9%8A%D9%85%20%D8%B5%D9%81%D8%AD%D8%A9%20QR%20%D8%B0%D9%83%D9%8A%D8%A9%20%D9%84%D9%85%D8%B4%D8%B1%D9%88%D8%B9%D9%8A" target="_blank" class="dev-link dev-wa" title="تواصل عبر واتساب لطلب صفحة لمشروعك">
+          <i class="fab fa-whatsapp"></i> أحمد محمد
+        </a>
+        <a href="https://www.facebook.com/share/1HmBiCLjYj/?mibextid=wwXIfr" target="_blank" class="dev-link dev-fb" title="حساب فيسبوك المطور">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </div>
     </div>
 
   </div>
