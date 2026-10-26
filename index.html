@@ -1100,6 +1100,69 @@
       margin-top: 2px;
     }
 
+    .clients-filter-bar {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      padding-bottom: 10px;
+      margin-bottom: 12px;
+      scrollbar-width: none;
+    }
+    .clients-filter-bar::-webkit-scrollbar { display: none; }
+
+    .client-filter-btn {
+      padding: 5px 12px;
+      border-radius: 20px;
+      background: #f8fafc;
+      border: 1px solid var(--border-color);
+      font-size: 12px;
+      font-weight: 600;
+      color: #64748b;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+    }
+
+    .client-filter-btn.active {
+      background: var(--brand-navy);
+      color: #ffffff;
+      border-color: var(--brand-navy);
+    }
+
+    .clients-search-box {
+      position: relative;
+      margin-bottom: 14px;
+    }
+
+    .clients-search-input {
+      width: 100%;
+      padding: 9px 36px 9px 14px;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      font-family: inherit;
+      font-size: 13px;
+      outline: none;
+      background: #f8fafc;
+      transition: all 0.2s ease;
+      text-align: right;
+    }
+
+    .clients-search-input:focus {
+      border-color: var(--brand-magenta);
+      background: #ffffff;
+      box-shadow: 0 0 0 3px rgba(192, 38, 211, 0.1);
+    }
+
+    .clients-search-icon {
+      position: absolute;
+      top: 50%;
+      right: 12px;
+      transform: translateY(-50%);
+      color: #94a3b8;
+      font-size: 13px;
+      pointer-events: none;
+    }
+
     .clients-list {
       display: flex;
       flex-direction: column;
@@ -1132,9 +1195,21 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 22px;
+      font-size: 20px;
       border: 1px solid #e2e8f0;
       flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    .client-avatar.with-img {
+      padding: 6px;
+      background: #ffffff;
+    }
+
+    .client-avatar.with-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
     }
 
     .client-details {
@@ -1810,8 +1885,8 @@
         <!-- Trust Stats Bar -->
         <div class="trust-stats">
           <div class="stat-box">
-            <div class="num">+500</div>
-            <div class="label">عميل وشركة</div>
+            <div class="num">+40</div>
+            <div class="label">عميل ومؤسسة كبرى</div>
           </div>
           <div class="stat-box">
             <div class="num">+1.5M</div>
@@ -1823,70 +1898,502 @@
           </div>
         </div>
 
-        <!-- Clients List -->
+        <!-- Category Filter Buttons Bar -->
+        <div class="clients-filter-bar">
+          <button class="client-filter-btn active" onclick="filterClients('all', this)">الكل (39)</button>
+          <button class="client-filter-btn" onclick="filterClients('food', this)">أغذية ومطاعم (9)</button>
+          <button class="client-filter-btn" onclick="filterClients('corporate', this)">مصانع وشركات (20)</button>
+          <button class="client-filter-btn" onclick="filterClients('medical', this)">مستشفيات ومعامل (4)</button>
+          <button class="client-filter-btn" onclick="filterClients('ngo', this)">تعليم ومؤسسات (4)</button>
+          <button class="client-filter-btn" onclick="filterClients('shorouk', this)">خدمات الشروق (2)</button>
+        </div>
+
+        <!-- Search Box -->
+        <div class="clients-search-box">
+          <i class="fas fa-search clients-search-icon"></i>
+          <input type="text" id="clientsSearchInput" class="clients-search-input" placeholder="ابحث باسم الشريك أو الشركة أو نوع المطبوعات..." oninput="searchClients(this.value)">
+        </div>
+
+        <!-- Clients List (39 Partners) -->
         <div class="clients-list">
-          
-          <!-- Client 1: Big Egg / Oval Foods -->
-          <div class="client-item">
-            <div class="client-avatar" style="background: #fff7ed; color: #ea580c;">
-              🥚
+
+          <!-- 1. هيلثي ميلك (Healthy Milk) -->
+          <div class="client-item" data-category="food" data-name="هيلثي ميلك healthy milk ألبان حليب زبادي استيكرات عصير">
+            <div class="client-avatar with-img">
+              <img src="imge/healthy-logo.png" alt="هيلثي ميلك" loading="lazy">
             </div>
             <div class="client-details">
-              <div class="client-name">شركة بيج إيج (Oval Foods)</div>
-              <div class="client-work">طباعة استيكرات باركود وليبل المنتجات التجارية بدقة فائقة</div>
+              <div class="client-name">هيلثي ميلك (Healthy Milk)</div>
+              <div class="client-work">طباعة عبوات الألبان والعصائر، استيكرات المنتجات الغذائية، ولواصق التجميد</div>
             </div>
             <i class="fas fa-check-circle client-verified" title="عميل موثق"></i>
           </div>
 
-          <!-- Client 2: Restaurants -->
-          <div class="client-item">
-            <div class="client-avatar" style="background: #fef2f2; color: #dc2626;">
-              🍔
+          <!-- 2. أوفال (Oval Foods) -->
+          <div class="client-item" data-category="food" data-name="أوفال بيج إيج oval foods egg بيض استيكرات كرتون تغليف">
+            <div class="client-avatar with-img">
+              <img src="imge/oval-logo.jpg" alt="أوفال" loading="lazy">
             </div>
             <div class="client-details">
-              <div class="client-name">سلسلة مطاعم كينج فودز</div>
-              <div class="client-work">طباعة المينيو، فلايرات العروض، وأوراق المائدة والمراسلات</div>
+              <div class="client-name">شركة أوفال للصناعات الغذائية (Oval Foods)</div>
+              <div class="client-work">طباعة استيكرات باركود وليبل أطباق البيض والكرتون والتغليف التجاري الدقيق</div>
             </div>
             <i class="fas fa-check-circle client-verified" title="عميل موثق"></i>
           </div>
 
-          <!-- Client 3: Fashion -->
-          <div class="client-item">
-            <div class="client-avatar" style="background: #fdf2f8; color: #db2777;">
-              👗
+          <!-- 3. جوتين العبور (Jotun Paints) -->
+          <div class="client-item" data-category="corporate" data-name="جوتين العبور jotun paints بويات دهانات دهانات العبور استيكرات">
+            <div class="client-avatar with-img">
+              <img src="imge/jotun-logo.svg" alt="جوتين العبور" loading="lazy">
             </div>
             <div class="client-details">
-              <div class="client-name">براند إليجانت للأزياء</div>
-              <div class="client-work">طباعة كروت التاج الورقية (Hang Tags)، بروشورات، واستيكرات المقاسات</div>
+              <div class="client-name">جوتين العبور (Jotun Paints)</div>
+              <div class="client-work">طباعة كروت درجات الألوان، استيكرات عبوات الدهانات، وبنرات ولافتات المعارض</div>
             </div>
             <i class="fas fa-check-circle client-verified" title="عميل موثق"></i>
           </div>
 
-          <!-- Client 4: Corporate -->
-          <div class="client-item">
-            <div class="client-avatar" style="background: #eff6ff; color: #0284c7;">
+          <!-- 4. جمعية رسالة (Resala Charity) -->
+          <div class="client-item" data-category="ngo" data-name="جمعية رسالة للأعمال الخيرية resala charity تبرع ايصالات بوسترات">
+            <div class="client-avatar with-img">
+              <img src="imge/resala-logo.png" alt="جمعية رسالة" loading="lazy">
+            </div>
+            <div class="client-details">
+              <div class="client-name">جمعية رسالة للأعمال الخيرية</div>
+              <div class="client-work">طباعة دفاتر إيصالات التبرع الرسمية، بروشورات وبوسترات الحملات الخيرية</div>
+            </div>
+            <i class="fas fa-check-circle client-verified" title="عميل موثق"></i>
+          </div>
+
+          <!-- 5. كيميكا (Chemica) -->
+          <div class="client-item" data-category="corporate" data-name="كيميكا chemica كيماويات مصانع استيكرات سلامة">
+            <div class="client-avatar" style="background: #e0f2fe; color: #0284c7;">
+              ⚗️
+            </div>
+            <div class="client-details">
+              <div class="client-name">شركة كيميكا للصناعات الكيماوية</div>
+              <div class="client-work">طباعة استيكرات العبوات الكيميائية المقاومة للتآكل وبطاقات إرشادات السلامة</div>
+            </div>
+            <i class="fas fa-check-circle client-verified" title="عميل موثق"></i>
+          </div>
+
+          <!-- 6. شركة الأبرار (Al-Abrar) -->
+          <div class="client-item" data-category="corporate" data-name="الأبرار al abrar فواتير فولدرات شركات">
+            <div class="client-avatar" style="background: #ecfdf5; color: #059669;">
               🏢
             </div>
             <div class="client-details">
-              <div class="client-name">مجموعة النيل للمقاولات والتطوير</div>
-              <div class="client-work">فولدرات الشركات الرسمية، أوراق مراسلات، وأختام رسمية</div>
+              <div class="client-name">شركة الأبرار للتجارة والتوريدات</div>
+              <div class="client-work">مطبوعات الشركات الرسمية، فواتير ضريبية، وفولدرات العروض التجارية</div>
             </div>
             <i class="fas fa-check-circle client-verified" title="عميل موثق"></i>
           </div>
 
-          <!-- Client 5: Pharma / Cosmetics -->
-          <div class="client-item">
-            <div class="client-avatar" style="background: #ecfdf5; color: #059669;">
-              🧪
+          <!-- 7. شركة الخواص (Al-Khawas) -->
+          <div class="client-item" data-category="corporate" data-name="الخواص al khawas كراتين أكياس شحن استيكرات ضمان">
+            <div class="client-avatar" style="background: #fef3c7; color: #d97706;">
+              📦
             </div>
             <div class="client-details">
-              <div class="client-name">معامل ومستحضرات النقاء</div>
-              <div class="client-work">طباعة النشرات الداخلية الطبية، استيكرات العبوات، والملصقات التحذيرية</div>
+              <div class="client-name">شركة الخواص للصناعة والتجارة</div>
+              <div class="client-work">كراتين التغليف المخصصة، أكياس شحن مطبوعة، واستيكرات الضمان والجودة</div>
+            </div>
+            <i class="fas fa-check-circle client-verified" title="عميل موثق"></i>
+          </div>
+
+          <!-- 8. مجموعة الشناوي (El-Shennawy Group) -->
+          <div class="client-item" data-category="corporate" data-name="الشناوي el shennawy مقاولات كتالوجات مشروعات">
+            <div class="client-avatar" style="background: #f1f5f9; color: #334155;">
+              🏗️
+            </div>
+            <div class="client-details">
+              <div class="client-name">مجموعة شركات الشناوي</div>
+              <div class="client-work">فولدرات المشروعات، كتالوجات المنتجات الفاخرة، ومطبوعات التعريف بالشركة</div>
+            </div>
+            <i class="fas fa-check-circle client-verified" title="عميل موثق"></i>
+          </div>
+
+          <!-- 9. معمل ألترا (Ultra Lab) -->
+          <div class="client-item" data-category="medical" data-name="معمل ألترا للتحاليل الطبية ultra lab تحاليل طبية باركود انابيب">
+            <div class="client-avatar" style="background: #eff6ff; color: #2563eb;">
+              🔬
+            </div>
+            <div class="client-details">
+              <div class="client-name">معمل ألترا للتحاليل الطبية (Ultra Lab)</div>
+              <div class="client-work">أظرف نتائج التحاليل، استيكرات باركود أنابيب الفحص، ونماذج التقارير الطبية</div>
+            </div>
+            <i class="fas fa-check-circle client-verified" title="عميل موثق"></i>
+          </div>
+
+          <!-- 10. بيتزا نور (Pizza Nour) -->
+          <div class="client-item" data-category="food" data-name="بيتزا نور pizza nour مطاعم مينيو علب بيتزا دليفري">
+            <div class="client-avatar" style="background: #fff1f2; color: #e11d48;">
+              🍕
+            </div>
+            <div class="client-details">
+              <div class="client-name">مطاعم بيتزا نور (Pizza Nour)</div>
+              <div class="client-work">علب بيتزا مطبوعة بخامات حرارية، مينيو ورقي ومطويات عروض الدليفري</div>
+            </div>
+            <i class="fas fa-check-circle client-verified" title="عميل موثق"></i>
+          </div>
+
+          <!-- 11. مؤسسة الثورة (El-Thawra) -->
+          <div class="client-item" data-category="corporate" data-name="الثورة el thawra صحافة مجلات طباعة دورية ملاحق">
+            <div class="client-avatar" style="background: #f3f4f6; color: #4b5563;">
+              📰
+            </div>
+            <div class="client-details">
+              <div class="client-name">مؤسسة وجريدة الثورة</div>
+              <div class="client-work">طباعة الأعداد الدورية، الملاحق الإعلانية والمطبوعات الصحفية الدورية</div>
+            </div>
+            <i class="fas fa-check-circle client-verified" title="عميل موثق"></i>
+          </div>
+
+          <!-- 12. شركة سيرا (Sera / Cera) -->
+          <div class="client-item" data-category="corporate" data-name="سيرا sera cera كرتون ليبل دلائل مستخدم">
+            <div class="client-avatar" style="background: #f5f3ff; color: #7c3aed;">
+              ⚙️
+            </div>
+            <div class="client-details">
+              <div class="client-name">شركة سيرا الصناعية (Cera)</div>
+              <div class="client-work">علب المنتجات الكرتونية، الليبل التجاري، ودلائل المستخدم المعتمدة</div>
+            </div>
+            <i class="fas fa-check-circle client-verified" title="عميل موثق"></i>
+          </div>
+
+          <!-- 13. رويال كيتشن (Royal Kitchen) -->
+          <div class="client-item" data-category="food" data-name="رويال كيتشن رويال كيشين royal kitchen مطابخ مطاعم مينيو وجبات">
+            <div class="client-avatar" style="background: #fff7ed; color: #ea580c;">
+              🍳
+            </div>
+            <div class="client-details">
+              <div class="client-name">رويال كيتشن (Royal Kitchen)</div>
+              <div class="client-work">مينيو فاخر، أوراق سفرة مطبوعة، وأغلفة وجبات وساندوتشات بجودة عالية</div>
+            </div>
+            <i class="fas fa-check-circle client-verified" title="عميل موثق"></i>
+          </div>
+
+          <!-- 14. شركة الريف المصري (El-Reef El-Masry) -->
+          <div class="client-item" data-category="food" data-name="الريف المصري el reef el masry زراعة أكياس تغليف محاصيل استيكرات">
+            <div class="client-avatar" style="background: #f0fdf4; color: #16a34a;">
+              🌾
+            </div>
+            <div class="client-details">
+              <div class="client-name">شركة الريف المصري للتنمية الزراعية</div>
+              <div class="client-work">أكياس تغليف المحاصيل والمنتجات الزراعية واستيكرات الجودة والفرز</div>
+            </div>
+            <i class="fas fa-check-circle client-verified" title="عميل موثق"></i>
+          </div>
+
+          <!-- 15. كينج أورانج (King Orange) -->
+          <div class="client-item" data-category="food" data-name="كينج أورانج كينج اورانج king orange عصائر فاكهة كراتين استيكرات">
+            <div class="client-avatar" style="background: #fffbeb; color: #f59e0b;">
+              🍊
+            </div>
+            <div class="client-details">
+              <div class="client-name">كينج أورانج للعصائر والمشروبات</div>
+              <div class="client-work">كراتين عصائر وفاكهة مطبوعة بـ 4 ألوان، أغلفة التعبئة واستيكرات المنتجات</div>
+            </div>
+            <i class="fas fa-check-circle client-verified" title="عميل موثق"></i>
+          </div>
+
+          <!-- 16. الشركة الإسلامية (El-Islamia) -->
+          <div class="client-item" data-category="corporate" data-name="الشركة الإسلامية el islamia دفاتر مطبوعات تجارية تقاويم نتائج أجندات">
+            <div class="client-avatar" style="background: #ecfdf5; color: #047857;">
+              📜
+            </div>
+            <div class="client-details">
+              <div class="client-name">الشركة الإسلامية للتجارة والطباعة</div>
+              <div class="client-work">دفاتر ومطبوعات تجارية، تقاويم سنوية (أجندات ونتائج)، وأوراق رسمية</div>
+            </div>
+            <i class="fas fa-check-circle client-verified" title="عميل موثق"></i>
+          </div>
+
+          <!-- 17. شركة النور (El-Nour) -->
+          <div class="client-item" data-category="corporate" data-name="شركة النور el nour كروت شخصية مطبوعات ادارية استيكرات">
+            <div class="client-avatar" style="background: #fefce8; color: #ca8a04;">
+              💡
+            </div>
+            <div class="client-details">
+              <div class="client-name">مجموعة شركات النور</div>
+              <div class="client-work">كروت شخصية فاخرة، مطبوعات إدارية، واستيكرات الترويج للعلامة التجارية</div>
+            </div>
+            <i class="fas fa-check-circle client-verified" title="عميل موثق"></i>
+          </div>
+
+          <!-- 18. مطاحن مشهور (Mashhour Mills) -->
+          <div class="client-item" data-category="food" data-name="مطحن مشهور مطاحن مشهور mashhour mills دقيق شكاير بطاقات انتاجية">
+            <div class="client-avatar" style="background: #fef9c3; color: #a16207;">
+              🌾
+            </div>
+            <div class="client-details">
+              <div class="client-name">مطاحن مشهور الحديثة</div>
+              <div class="client-work">شكاير وأكياس دقيق مطبوعة، بطاقات البيانات الإنتاجية والمواصفات القياسية</div>
+            </div>
+            <i class="fas fa-check-circle client-verified" title="عميل موثق"></i>
+          </div>
+
+          <!-- 19. جراند إيج (Grand Egg) -->
+          <div class="client-item" data-category="food" data-name="جراند إيج جراند ايج grand egg بيض مزارع شرائح باركود صلاحية">
+            <div class="client-avatar" style="background: #fef3c7; color: #d97706;">
+              🥚
+            </div>
+            <div class="client-details">
+              <div class="client-name">مزارع جراند إيج (Grand Egg)</div>
+              <div class="client-work">شرائح تغليف أطباق البيض، باركودات التوزيع، وكروت الصلاحية والفرز</div>
+            </div>
+            <i class="fas fa-check-circle client-verified" title="عميل موثق"></i>
+          </div>
+
+          <!-- 20. مركز الأهل (Al-Ahl Center) -->
+          <div class="client-item" data-category="ngo" data-name="مركز الأهل مركز الاهل al ahl كروت متابعة عضوية فعاليات">
+            <div class="client-avatar" style="background: #f0fdfa; color: #0d9488;">
+              🤝
+            </div>
+            <div class="client-details">
+              <div class="client-name">مركز الأهل التنموي والخدمي</div>
+              <div class="client-work">كروت المتابعة، بطاقات العضوية، وبنرات الفعاليات والمؤتمرات</div>
+            </div>
+            <i class="fas fa-check-circle client-verified" title="عميل موثق"></i>
+          </div>
+
+          <!-- 21. المدرسة المصرية اليابانية (EJS) -->
+          <div class="client-item" data-category="ngo" data-name="المدرسة اليابانية اليابانية japanese school مدارس تعليم دفاتر متابعة شهادات تقدير">
+            <div class="client-avatar" style="background: #fdf2f8; color: #db2777;">
+              🏫
+            </div>
+            <div class="client-details">
+              <div class="client-name">المدرسة المصرية اليابانية (EJS)</div>
+              <div class="client-work">دفاتر المتابعة المدرسية، شهادات التقدير، وأدلة الأنشطة والفعاليات التعليمية</div>
+            </div>
+            <i class="fas fa-check-circle client-verified" title="عميل موثق"></i>
+          </div>
+
+          <!-- 22. شركة الجودة (El-Gawda) -->
+          <div class="client-item" data-category="corporate" data-name="شركة الجودة el gawda ايزو فحص فواتير ليبل">
+            <div class="client-avatar" style="background: #fefce8; color: #eab308;">
+              ⭐
+            </div>
+            <div class="client-details">
+              <div class="client-name">شركة الجودة للخدمات المتكاملة</div>
+              <div class="client-work">ليبل مطبوعات معايير الجودة (ISO)، فواتير تجارية، واستيكرات الفحص والاعتماد</div>
+            </div>
+            <i class="fas fa-check-circle client-verified" title="عميل موثق"></i>
+          </div>
+
+          <!-- 23. رويال الشروق (Royal El-Shorouk) -->
+          <div class="client-item" data-category="shorouk" data-name="رويال الشروق royal el shorouk الشروق دعاية مجمعات لافتات بروشورات">
+            <div class="client-avatar" style="background: #faf5ff; color: #9333ea;">
+              👑
+            </div>
+            <div class="client-details">
+              <div class="client-name">مؤسسة رويال الشروق</div>
+              <div class="client-work">لوحات إعلانية خارجية، مطبوعات تسويقية للمجمعات، وبروشورات راقية</div>
+            </div>
+            <i class="fas fa-check-circle client-verified" title="عميل موثق"></i>
+          </div>
+
+          <!-- 24. نور الشروق (Nour El-Shorouk) -->
+          <div class="client-item" data-category="shorouk" data-name="نور الشروق nour el shorouk الشروق مطبوعات تسويقية عروض">
+            <div class="client-avatar" style="background: #fffbeb; color: #b45309;">
+              ☀️
+            </div>
+            <div class="client-details">
+              <div class="client-name">مركز نور الشروق للخدمات</div>
+              <div class="client-work">مطبوعات تجارية وتسويقية تغطي نطاق مدينة الشروق والمناطق المجاورة</div>
+            </div>
+            <i class="fas fa-check-circle client-verified" title="عميل موثق"></i>
+          </div>
+
+          <!-- 25. جزارة محمد سعيد (Mohamed Saeed Butchery) -->
+          <div class="client-item" data-category="food" data-name="جزارة محمد سعيد جزراة محمد سعيد mohamed saeed لحوم اكياس استيكرات تبريد">
+            <div class="client-avatar" style="background: #fff1f2; color: #be123c;">
+              🥩
+            </div>
+            <div class="client-details">
+              <div class="client-name">سلسلة جزارة محمد سعيد</div>
+              <div class="client-work">استيكرات مقاومة للماء والبرودة لأطباق اللحوم، وأكياس تسوق مطبوعة باسم البراند</div>
+            </div>
+            <i class="fas fa-check-circle client-verified" title="عميل موثق"></i>
+          </div>
+
+          <!-- 26. أبراج الخليج (Abraj El-Khaleej) -->
+          <div class="client-item" data-category="corporate" data-name="أبراج الخليج ابراج الخليج abraj el khaleej مقاولات عقارات بروفايل خرائط خطابات">
+            <div class="client-avatar" style="background: #f0f9ff; color: #0284c7;">
+              🏙️
+            </div>
+            <div class="client-details">
+              <div class="client-name">أبراج الخليج للمقاولات والتطوير</div>
+              <div class="client-work">بروفايل الشركات المعماري، خرائط مشروعات، وأوراق الخطابات الرسمية المروّسة</div>
+            </div>
+            <i class="fas fa-check-circle client-verified" title="عميل موثق"></i>
+          </div>
+
+          <!-- 27. مجموعة البسيوني (El-Basiony) -->
+          <div class="client-item" data-category="corporate" data-name="البسيوني el basiony سندات فواتير كاربون اختام شركات">
+            <div class="client-avatar" style="background: #f8fafc; color: #475569;">
+              🏛️
+            </div>
+            <div class="client-details">
+              <div class="client-name">مجموعة البسيوني التجارية</div>
+              <div class="client-work">سندات قبض وصرف، فواتير كمبيوتر متعددة النسخ (كاربون)، وأختام رسمية</div>
+            </div>
+            <i class="fas fa-check-circle client-verified" title="عميل موثق"></i>
+          </div>
+
+          <!-- 28. شركة التيسير (El-Tayseer) -->
+          <div class="client-item" data-category="corporate" data-name="التيسير el tayseer كروت ضمان استيكرات باركود سريال">
+            <div class="client-avatar" style="background: #ecfdf5; color: #047857;">
+              🤝
+            </div>
+            <div class="client-details">
+              <div class="client-name">شركة التيسير للتجارة والتوزيع</div>
+              <div class="client-work">كروت ضمان المنتجات، استيكرات سريال نامبر وباركود، وأدلة التشغيل</div>
+            </div>
+            <i class="fas fa-check-circle client-verified" title="عميل موثق"></i>
+          </div>
+
+          <!-- 29. مجموعة العاصمة (El-Asema Group) -->
+          <div class="client-item" data-category="corporate" data-name="العاصمة el asema بنرات معارض فولدرات فاخرة يو في uv">
+            <div class="client-avatar" style="background: #f1f5f9; color: #1e293b;">
+              🏢
+            </div>
+            <div class="client-details">
+              <div class="client-name">مجموعة العاصمة للاستثمار والتجارة</div>
+              <div class="client-work">بنرات معارض، فولدرات فاخرة بـ UV وطلاء ذهبي، وبطاقات تعريف معتمدة</div>
+            </div>
+            <i class="fas fa-check-circle client-verified" title="عميل موثق"></i>
+          </div>
+
+          <!-- 30. مؤسسة طه ياسين (Taha Yaseen) -->
+          <div class="client-item" data-category="corporate" data-name="طه ياسين taha yaseen مراسلات دفاتر توريد مطبوعات مكتبية">
+            <div class="client-avatar" style="background: #fdf4ff; color: #a21caf;">
+              📐
+            </div>
+            <div class="client-details">
+              <div class="client-name">مؤسسة طه ياسين للأعمال الهندسية</div>
+              <div class="client-work">أوراق مراسلات مروّسة (Letterheads)، دفاتر توريد ومطبوعات مكتبية</div>
+            </div>
+            <i class="fas fa-check-circle client-verified" title="عميل موثق"></i>
+          </div>
+
+          <!-- 31. شركة الصفوة (Al-Safwa) -->
+          <div class="client-item" data-category="corporate" data-name="الصفوة al safwa بروشورات علب تغليف هدايا علب فاخرة">
+            <div class="client-avatar" style="background: #eef2ff; color: #4338ca;">
+              💎
+            </div>
+            <div class="client-details">
+              <div class="client-name">شركة الصفوة للخدمات والتوريدات</div>
+              <div class="client-work">بروشورات دعائية عالية الدقة، علب تغليف منتجات وعلب هدايا فاخرة</div>
+            </div>
+            <i class="fas fa-check-circle client-verified" title="عميل موثق"></i>
+          </div>
+
+          <!-- 32. مستشفى الدار (El-Dar Hospital) -->
+          <div class="client-item" data-category="medical" data-name="مستشفى الدار مستشفي الدار el dar hospital مستشفيات سجلات روشتات ملفات مرضى">
+            <div class="client-avatar" style="background: #eff6ff; color: #1d4ed8;">
+              🏥
+            </div>
+            <div class="client-details">
+              <div class="client-name">مستشفى الدار التخصصي</div>
+              <div class="client-work">ملفات وسجلات المرضى، روشتات طبية مائية، واستيكرات تحذيرية للمختبرات</div>
+            </div>
+            <i class="fas fa-check-circle client-verified" title="عميل موثق"></i>
+          </div>
+
+          <!-- 33. مجموعة الفؤاد (El-Fouad Group) -->
+          <div class="client-item" data-category="corporate" data-name="الفؤاد الفواد el fouad كرتون كروت تسويقية استيكرات توزيع">
+            <div class="client-avatar" style="background: #fef2f2; color: #dc2626;">
+              ⚡
+            </div>
+            <div class="client-details">
+              <div class="client-name">مجموعة الفؤاد الصناعية والتجارية</div>
+              <div class="client-work">علب كرتون مصقولة، كروت تسويقية، واستيكرات التوزيع لجميع الفروع</div>
+            </div>
+            <i class="fas fa-check-circle client-verified" title="عميل موثق"></i>
+          </div>
+
+          <!-- 34. بيرلز ومودرن سكول (Pearls & Modern School) -->
+          <div class="client-item" data-category="ngo" data-name="بيريلز ومودرن سكول بيرلز modern school pearls مدارس مذكرات كارنيهات بوسترات تعليم">
+            <div class="client-avatar" style="background: #fdf2f8; color: #be185d;">
+              🎓
+            </div>
+            <div class="client-details">
+              <div class="client-name">بيرلز ومودرن سكول (Pearls & Modern School)</div>
+              <div class="client-work">كتب ومذكرات دراسية، كارنيهات الطلاب الملونة، وبوسترات الأنشطة التعليمية</div>
+            </div>
+            <i class="fas fa-check-circle client-verified" title="عميل موثق"></i>
+          </div>
+
+          <!-- 35. مستشفى الجلال (El-Galal Hospital) -->
+          <div class="client-item" data-category="medical" data-name="مستشفى الجلال مستشفي الجلال el galal hospital مستشفيات اشعة فحوصات بطاقات دخول">
+            <div class="client-avatar" style="background: #f0fdfa; color: #0f766e;">
+              🩺
+            </div>
+            <div class="client-details">
+              <div class="client-name">مستشفى الجلال التخصصي</div>
+              <div class="client-work">أظرف أشعة وفحوصات، بطاقات دخول المرضى، ومطبوعات إدارية طبية متكاملة</div>
+            </div>
+            <i class="fas fa-check-circle client-verified" title="عميل موثق"></i>
+          </div>
+
+          <!-- 36. مؤسسة السعدني (El-Saadani) -->
+          <div class="client-item" data-category="corporate" data-name="السعدني el saadani كتالوجات مجلات فواتير معاملات رسمية">
+            <div class="client-avatar" style="background: #fef3c7; color: #b45309;">
+              🏆
+            </div>
+            <div class="client-details">
+              <div class="client-name">مؤسسة السعدني للتجارة والصناعة</div>
+              <div class="client-work">مجلات سنوية وكتالوجات منتجات ملونة، فواتير وأوراق معاملات رسمية</div>
+            </div>
+            <i class="fas fa-check-circle client-verified" title="عميل موثق"></i>
+          </div>
+
+          <!-- 37. مكتب وشركة خالد مشهور (Khaled Mashhour) -->
+          <div class="client-item" data-category="corporate" data-name="خالد مشهور khaled mashhour محاماة استشارات كروت ذهبية فولدرات">
+            <div class="client-avatar" style="background: #f8fafc; color: #334155;">
+              ⚖️
+            </div>
+            <div class="client-details">
+              <div class="client-name">مكتب وشركة خالد مشهور للاستشارات</div>
+              <div class="client-work">فولدرات ملفات قانونية فاخرة، كروت عمل ببصمة ذهبية، وأوراق مراسلات سرية</div>
+            </div>
+            <i class="fas fa-check-circle client-verified" title="عميل موثق"></i>
+          </div>
+
+          <!-- 38. مستشفى المعلمين (Teachers Hospital) -->
+          <div class="client-item" data-category="medical" data-name="مستشفى المعلمين مستشفي المعلمين teachers hospital مستشفيات تقارير عمليات توعية صحية">
+            <div class="client-avatar" style="background: #ecfdf5; color: #059669;">
+              🏥
+            </div>
+            <div class="client-details">
+              <div class="client-name">مستشفى المعلمين</div>
+              <div class="client-work">تقارير العمليات الطبية، استيكرات التحاليل الدقيقة، وكتيبات التوعية الصحية</div>
+            </div>
+            <i class="fas fa-check-circle client-verified" title="عميل موثق"></i>
+          </div>
+
+          <!-- 39. شركة إليفن (Eleven) -->
+          <div class="client-item" data-category="corporate" data-name="إليفن اليفان eleven brand هوية بصرية استيكرات ليبل منتجات">
+            <div class="client-avatar" style="background: #f5f3ff; color: #6d28d9; font-weight: 800; font-size: 16px;">
+              11
+            </div>
+            <div class="client-details">
+              <div class="client-name">شركة إليفن (Eleven Group)</div>
+              <div class="client-work">تصاميم ومطبوعات عصرية للعلامة التجارية، استيكرات، وليبل المنتجات الفاخرة</div>
             </div>
             <i class="fas fa-check-circle client-verified" title="عميل موثق"></i>
           </div>
 
         </div>
+
+        <!-- Empty Search State -->
+        <div id="clientsEmptyState" style="display:none; text-align:center; padding: 30px 15px; color: #64748b;">
+          <i class="fas fa-search" style="font-size: 32px; color: #cbd5e1; margin-bottom: 10px; display:block;"></i>
+          <div style="font-weight: 700; font-size: 15px; color: #334155;">لا توجد شركات أو نتائج مطابقة لبحثك</div>
+          <div style="font-size: 12px; margin-top: 4px; color: #94a3b8;">جرّب كتابة اسم شريك آخر أو نوع المطبوعة</div>
+        </div>
+
       </div>
 
       </div> <!-- End .modal-body -->
@@ -2056,6 +2563,46 @@
           card.style.display = 'none';
         }
       });
+    }
+
+    // Clients Filter & Live Search
+    let currentClientCategory = 'all';
+    let currentClientQuery = '';
+
+    function filterClients(category, btnElement) {
+      currentClientCategory = category;
+      const filterBtns = document.querySelectorAll('.client-filter-btn');
+      filterBtns.forEach(btn => btn.classList.remove('active'));
+      if (btnElement) btnElement.classList.add('active');
+      applyClientsFilter();
+    }
+
+    function searchClients(query) {
+      currentClientQuery = (query || '').trim().toLowerCase();
+      applyClientsFilter();
+    }
+
+    function applyClientsFilter() {
+      const items = document.querySelectorAll('.clients-list .client-item');
+      let visibleCount = 0;
+      items.forEach(item => {
+        const cat = item.getAttribute('data-category');
+        const searchData = (item.getAttribute('data-name') || '') + ' ' + (item.innerText || '');
+        const matchesCategory = (currentClientCategory === 'all' || cat === currentClientCategory);
+        const matchesQuery = (!currentClientQuery || searchData.toLowerCase().includes(currentClientQuery));
+
+        if (matchesCategory && matchesQuery) {
+          item.style.display = 'flex';
+          visibleCount++;
+        } else {
+          item.style.display = 'none';
+        }
+      });
+
+      const emptyEl = document.getElementById('clientsEmptyState');
+      if (emptyEl) {
+        emptyEl.style.display = (visibleCount === 0) ? 'block' : 'none';
+      }
     }
 
     // Lightbox Controls
